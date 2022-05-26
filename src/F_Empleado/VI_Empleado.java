@@ -5,17 +5,30 @@
  */
 package F_Empleado;
 
-/**
- *
- * @author LUIS
- */
+import java.sql.*;
+import javax.swing.ButtonGroup;
+import Modelo.*;
+import javax.swing.*;
+import Controlador.*;
+import javax.swing.table.DefaultTableModel;
+
 public class VI_Empleado extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form VI_Empleado
-     */
+    ResultSet rs;
+    int con;
+    ButtonGroup brt;
+    M_Insercion m_i = new M_Insercion();
+    M_MostrarDatos mm = new M_MostrarDatos();
+
     public VI_Empleado() {
         initComponents();
+        this.setLocation(200, 20);
+        mm.MostrarModelo(tabla1);
+        // consultarRoles(combo1);
+        brt = new ButtonGroup();
+        brt.add(rb_Activo);
+        brt.add(rb_Inactivo);
+        brt.add(rb_Retirado);
     }
 
     /**
@@ -27,21 +40,305 @@ public class VI_Empleado extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        txtNombre = new javax.swing.JTextField();
+        cbxTdocument = new javax.swing.JComboBox<>();
+        txtNdocumento = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        lblCod = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
+        txtNacionalidad = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtEdad = new javax.swing.JTextField();
+        txtGenero = new javax.swing.JTextField();
+        txtDistrito = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        rb_Activo = new javax.swing.JRadioButton();
+        rb_Inactivo = new javax.swing.JRadioButton();
+        rb_Retirado = new javax.swing.JRadioButton();
+        Registrar = new javax.swing.JButton();
+        MostrarEmpleado = new javax.swing.JButton();
+        BTN_Eliminar = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
+        tabla1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tabla1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabla1);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 200, -1));
+
+        cbxTdocument.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Dni", "Carnet Extranjeria" }));
+        jPanel1.add(cbxTdocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 200, -1));
+        jPanel1.add(txtNdocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 200, -1));
+
+        jLabel1.setText("Codigo");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        lblCod.setText("Codigo");
+        jPanel1.add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 197, -1));
+
+        jLabel3.setText("T. Documento");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        jLabel4.setText("Nª Documento");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        jLabel5.setText("Nombre");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 197, -1));
+
+        txtNacionalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNacionalidadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 197, -1));
+
+        jLabel6.setText("Apellido");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+
+        jLabel7.setText("Nacionalidad");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        jLabel8.setText("Edad");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
+        jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 170, -1));
+        jPanel1.add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 170, -1));
+        jPanel1.add(txtDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 170, -1));
+
+        jLabel9.setText("Genero");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, -1, -1));
+
+        jLabel10.setText("Distrito");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
+
+        jLabel11.setText("Estado");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
+
+        rb_Activo.setText("Activo");
+        jPanel1.add(rb_Activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, -1));
+
+        rb_Inactivo.setText("Inactivo");
+        jPanel1.add(rb_Inactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
+
+        rb_Retirado.setText("Retirado");
+        jPanel1.add(rb_Retirado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, -1, -1));
+
+        Registrar.setText("Registrar");
+        Registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
+
+        MostrarEmpleado.setText("Mostrar Empleado");
+        MostrarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarEmpleadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(MostrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 160, -1));
+
+        BTN_Eliminar.setText("Eliminar");
+        BTN_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_EliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BTN_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 80, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtNacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacionalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNacionalidadActionPerformed
+
+    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
+        String Tdocumento = cbxTdocument.getSelectedItem().toString();
+        String numeroDoc = txtNdocumento.getText();
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String nacionalidad = txtNacionalidad.getText();
+        int edad = Integer.parseInt(txtEdad.getText());
+        String genero = txtGenero.getText();
+        String distrito = txtDistrito.getText();
+        String estado = null;
+
+        if (rb_Activo.isSelected()) {
+            estado = "A";
+        }
+        if (rb_Inactivo.isSelected()) {
+            estado = "I";
+        }
+        if (rb_Retirado.isSelected()) {
+            estado = "R";
+        }
+
+        if (txtNdocumento.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Verifique el Campo de Documento");
+            txtNdocumento.setText("");
+            txtNdocumento.requestFocus();
+        } else {
+            try {
+                rs = Conexion.consulta("select COUNT(numeroDocumento) from Empleado where numeroDocumento = '" + txtNdocumento.getText() + "'");
+                try {
+                    while (rs.next()) {
+                        con = rs.getInt(1);
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
+                if (con >= 1) {
+                    JOptionPane.showMessageDialog(null, "El Usuario Existe");
+                } else {
+                    M_Insercion.sp_InsentarEmpleados(Tdocumento, numeroDoc, nombre, apellido, nacionalidad, edad, genero, distrito, estado);
+                    JOptionPane.showMessageDialog(null, "Registro Exitoso");
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "UPss PAso algo con el registro" + "\n" + e);
+            }
+
+        }
+
+
+    }//GEN-LAST:event_RegistrarActionPerformed
+
+    private void MostrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarEmpleadoActionPerformed
+        
+        mm.MostrarModelo(tabla1);
+    }//GEN-LAST:event_MostrarEmpleadoActionPerformed
+
+    private void BTN_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EliminarActionPerformed
+
+
+    }//GEN-LAST:event_BTN_EliminarActionPerformed
+
+    private void tabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseClicked
+
+        if (tabla1.getSelectedRow() >= 0) {
+            try {
+                DefaultTableModel modelo = (DefaultTableModel) tabla1.getModel();
+                String codigo = String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(), 0));
+                String tipoDocumen = String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(), 1));
+                String nDocumento = String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(), 2));
+                String nombre = String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(), 3));
+                String apellido = String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(), 4));
+                String nacionalidad = String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(), 5));
+                String edad = String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(), 6));
+                String genero = String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(), 7));
+                String distrito = String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(), 8));
+                String estado = String.valueOf(modelo.getValueAt(tabla1.getSelectedRow(), 9));
+
+                lblCod.setText(codigo);
+                cbxTdocument.setSelectedItem(nombre);
+                txtNdocumento.setText(nDocumento);
+                txtNombre.setText(nombre);
+                txtApellido.setText(apellido);
+                txtNacionalidad.setText(nacionalidad);
+                txtEdad.setText(edad);
+                txtGenero.setText(genero);
+                txtDistrito.setText(distrito);                
+                switch (estado) {
+                    case "A":
+                        rb_Activo.setSelected(true);
+                        break;
+                    case "I":
+                        rb_Inactivo.setSelected(true);
+                        break;
+                    case "R":
+                        rb_Retirado.setSelected(true);
+                        break;
+                    default:
+                        rb_Activo.setSelected(false);
+                        break;
+                }
+
+            } catch (Exception e) {
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error en el Jtable");
+        }
+    }//GEN-LAST:event_tabla1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_Eliminar;
+    private javax.swing.JButton MostrarEmpleado;
+    private javax.swing.JButton Registrar;
+    private javax.swing.JComboBox<String> cbxTdocument;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCod;
+    private javax.swing.JRadioButton rb_Activo;
+    private javax.swing.JRadioButton rb_Inactivo;
+    private javax.swing.JRadioButton rb_Retirado;
+    private javax.swing.JTable tabla1;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtDistrito;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtGenero;
+    private javax.swing.JTextField txtNacionalidad;
+    private javax.swing.JTextField txtNdocumento;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
