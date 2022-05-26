@@ -99,8 +99,8 @@ public class V_sesion extends javax.swing.JFrame {
        
         if (txtusuario.getText().equals("sa")) {
             Controlador.Conexion.getStatus();
-            principal pri = new principal();
-            pri.setVisible(true);
+            FormularioAdmin fra = new FormularioAdmin();
+            fra.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "erro en la conexion");
         }

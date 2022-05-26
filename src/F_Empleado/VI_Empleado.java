@@ -11,6 +11,7 @@ import Modelo.*;
 import javax.swing.*;
 import Controlador.*;
 import javax.swing.table.DefaultTableModel;
+import fornulario.*;
 
 public class VI_Empleado extends javax.swing.JInternalFrame {
 
@@ -68,6 +69,7 @@ public class VI_Empleado extends javax.swing.JInternalFrame {
         Registrar = new javax.swing.JButton();
         MostrarEmpleado = new javax.swing.JButton();
         BTN_Eliminar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -158,7 +160,7 @@ public class VI_Empleado extends javax.swing.JInternalFrame {
                 RegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
+        jPanel1.add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         MostrarEmpleado.setText("Mostrar Empleado");
         MostrarEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +168,7 @@ public class VI_Empleado extends javax.swing.JInternalFrame {
                 MostrarEmpleadoActionPerformed(evt);
             }
         });
-        jPanel1.add(MostrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 160, -1));
+        jPanel1.add(MostrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 160, -1));
 
         BTN_Eliminar.setText("Eliminar");
         BTN_Eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +176,15 @@ public class VI_Empleado extends javax.swing.JInternalFrame {
                 BTN_EliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 80, -1));
+        jPanel1.add(BTN_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 80, -1));
+
+        jButton1.setText("Asignacion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -310,12 +320,21 @@ public class VI_Empleado extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tabla1MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        AsignacionArea aa = new AsignacionArea();
+       FormularioAdmin.ADescritorio.add(aa);
+       aa.setVisible(true);
+        
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Eliminar;
     private javax.swing.JButton MostrarEmpleado;
     private javax.swing.JButton Registrar;
     private javax.swing.JComboBox<String> cbxTdocument;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

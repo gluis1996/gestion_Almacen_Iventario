@@ -9,7 +9,7 @@ package fornulario;
  *
  * @author LUIS
  */
-import F_Empleado.*;
+
 public class principal extends javax.swing.JFrame {
 
     public principal() {
@@ -84,9 +84,7 @@ public class principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        VI_Empleado em = new VI_Empleado();               
-        escritorio.add(em);
-        em.setVisible(true);
+        
         
         
     }//GEN-LAST:event_jMenu1MouseClicked
