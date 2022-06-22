@@ -227,7 +227,7 @@ public class v_principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void m_empleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_empleadosMouseClicked
-        
+       
     }//GEN-LAST:event_m_empleadosMouseClicked
 
     private void m_empleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_empleadosActionPerformed

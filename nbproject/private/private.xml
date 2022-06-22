@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Ciclo%204/POO/Grupal%2005/Gestion/gestion_Almacen_Iventario/src/controlador/c_categoria.java</file>
-            <file>file:/F:/Ciclo%204/POO/Grupal%2005/Gestion/gestion_Almacen_Iventario/src/controlador/c_empleado.java</file>
-            <file>file:/F:/Ciclo%204/POO/Grupal%2005/Gestion/gestion_Almacen_Iventario/src/modelo/m_categoriaDAO.java</file>
+            <file>file:/F:/Ciclo%204/POO/Grupal%2005/Gestion/gestion_Almacen_Iventario/src/controlador/c_productoPiso.java</file>
+            <file>file:/F:/Ciclo%204/POO/Grupal%2005/Gestion/gestion_Almacen_Iventario/src/Vistas_InternasAdmin/vi_productoPiso.java</file>
+            <file>file:/F:/Ciclo%204/POO/Grupal%2005/Gestion/gestion_Almacen_Iventario/src/modelo/m_productoPisoDAO.java</file>
+            <file>file:/F:/Ciclo%204/POO/Grupal%2005/Gestion/gestion_Almacen_Iventario/src/vista/v_principal.java</file>
         </group>
     </open-files>
 </project-private>

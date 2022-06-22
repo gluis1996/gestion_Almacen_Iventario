@@ -37,7 +37,7 @@ public class m_categoriaDAO {
     }
 
     public void registar(m_categoria mc) {
-        String consulta = "{call sp_ingresar_categoria(?)}";
+        String consulta = "{call sp_insertar_productoPiso(?)}";
         try {
             CallableStatement cs = Conexion.getConexion().prepareCall(consulta);
             cs.setString(1, mc.getNombre());
