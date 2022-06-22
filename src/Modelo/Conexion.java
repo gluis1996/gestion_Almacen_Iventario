@@ -1,25 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Controlador;
+package modelo;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author LUIS
- */
 public class Conexion {
-
     static Connection con = null;
     static String usuario;
     static String password;
     static boolean status = false;
     static String IpRemoto;
-
+    
     public static String getIpRemoto() {
         return IpRemoto;
     }
@@ -30,8 +24,8 @@ public class Conexion {
 
     public static Connection getConexion() {
         status = false;
-
-        String url = "jdbc:sqlserver://" + Conexion.getIpRemoto() + ":1433;databaseName=Licoreria";
+        
+        String url = "jdbc:sqlserver://sqlpruebasmvc.database.windows.net:1433;databaseName=Licoreria";
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         } catch (ClassNotFoundException e) {
@@ -39,23 +33,15 @@ public class Conexion {
         }
 
         try {
-            con = DriverManager.getConnection(url, Conexion.usuario, Conexion.password);
+            con = DriverManager.getConnection(url, "lgonzalo", "@lmgv0704");
             status = true;
             //JOptionPane.showMessageDialog(null, "conexion Exitosa");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "error " + e);
         }
         return con;
-
     }
-    public static void setCuenta(String usu, String pas) {
-        usuario = usu;
-        password = pas;
-    }
-    
-    public static boolean getStatus() {
-        return status;
-    }
+   
     
     public static ResultSet consulta(String consulta) {
         Connection con = getConexion();
@@ -69,7 +55,4 @@ public class Conexion {
         }
         return null;
     }
-    
-    
-    
 }
