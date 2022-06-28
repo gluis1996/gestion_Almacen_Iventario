@@ -45,12 +45,19 @@ public class vi_empleado extends javax.swing.JInternalFrame {
         rb_Inactivo = new javax.swing.JRadioButton();
         BTN_Registrar = new javax.swing.JButton();
         BTN_MostrarEmpleado = new javax.swing.JButton();
-        BTN_Editar = new javax.swing.JButton();
-        boton_asignacion = new javax.swing.JButton();
+        BTN_Cargar = new javax.swing.JButton();
+        boton_Nuevo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         CBX_roles = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         cbxGenero = new javax.swing.JComboBox<>();
+        boton_Eliminar = new javax.swing.JButton();
+        boton_mostrar_usuario = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,24 +114,24 @@ public class vi_empleado extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jLabel8.setText("Edad");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
-        jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 170, -1));
-        jPanel1.add(txtDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 170, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
+        jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 170, -1));
+        jPanel1.add(txtDistrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 170, -1));
 
         jLabel9.setText("Genero");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, -1, -1));
 
         jLabel10.setText("Distrito");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, -1, -1));
 
         jLabel11.setText("Estado");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, -1));
 
         rb_Activo.setText("Activo");
-        jPanel1.add(rb_Activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
+        jPanel1.add(rb_Activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, -1, -1));
 
         rb_Inactivo.setText("Inactivo");
-        jPanel1.add(rb_Inactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
+        jPanel1.add(rb_Inactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
 
         BTN_Registrar.setText("Registrar");
         BTN_Registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,29 +147,29 @@ public class vi_empleado extends javax.swing.JInternalFrame {
                 BTN_MostrarEmpleadoActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_MostrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 160, -1));
+        jPanel1.add(BTN_MostrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 130, -1));
 
-        BTN_Editar.setText("Eliminar");
-        BTN_Editar.addActionListener(new java.awt.event.ActionListener() {
+        BTN_Cargar.setText("Cargar");
+        BTN_Cargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_EditarActionPerformed(evt);
+                BTN_CargarActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 80, -1));
+        jPanel1.add(BTN_Cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 80, -1));
 
-        boton_asignacion.setText("Asignacion");
-        boton_asignacion.addActionListener(new java.awt.event.ActionListener() {
+        boton_Nuevo.setText("Nuevo");
+        boton_Nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_asignacionActionPerformed(evt);
+                boton_NuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_asignacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
+        jPanel1.add(boton_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
 
         jLabel2.setText("Rol:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
 
         CBX_roles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccion", "Vendedor", "Reponedor", "Almacenero" }));
-        jPanel1.add(CBX_roles, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 170, -1));
+        jPanel1.add(CBX_roles, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 170, -1));
 
         jButton2.setText("salir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -170,10 +177,16 @@ public class vi_empleado extends javax.swing.JInternalFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
 
         cbxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "F", "M" }));
-        jPanel1.add(cbxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 170, -1));
+        jPanel1.add(cbxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 170, -1));
+
+        boton_Eliminar.setText("Eliminar");
+        jPanel1.add(boton_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, -1, -1));
+
+        boton_mostrar_usuario.setText("Mostrar Usuarios");
+        jPanel1.add(boton_mostrar_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,16 +195,16 @@ public class vi_empleado extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -304,13 +317,13 @@ public class vi_empleado extends javax.swing.JInternalFrame {
         //mm.MostrarModelo(tabla1);
     }//GEN-LAST:event_BTN_MostrarEmpleadoActionPerformed
 
-    private void BTN_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EditarActionPerformed
+    private void BTN_CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CargarActionPerformed
 
-    }//GEN-LAST:event_BTN_EditarActionPerformed
+    }//GEN-LAST:event_BTN_CargarActionPerformed
 
-    private void boton_asignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_asignacionActionPerformed
+    private void boton_NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_NuevoActionPerformed
 
-    }//GEN-LAST:event_boton_asignacionActionPerformed
+    }//GEN-LAST:event_boton_NuevoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
@@ -318,11 +331,13 @@ public class vi_empleado extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton BTN_Editar;
+    public javax.swing.JButton BTN_Cargar;
     public javax.swing.JButton BTN_MostrarEmpleado;
     public javax.swing.JButton BTN_Registrar;
     public javax.swing.JComboBox<String> CBX_roles;
-    public javax.swing.JButton boton_asignacion;
+    public javax.swing.JButton boton_Eliminar;
+    public javax.swing.JButton boton_Nuevo;
+    public javax.swing.JButton boton_mostrar_usuario;
     public javax.swing.JComboBox<String> cbxGenero;
     public javax.swing.JComboBox<String> cbxTdocument;
     private javax.swing.JButton jButton2;

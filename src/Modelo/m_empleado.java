@@ -1,6 +1,7 @@
 package modelo;
 
 public class m_empleado {
+    private String codigo;
     private String tipodocumento;
     private String numerodocumento;
     private String nombre;
@@ -15,8 +16,8 @@ public class m_empleado {
     public m_empleado() {
     }
 
-    
-    public m_empleado(String tipodocumento, String numerodocumento, String nombre, String apellido, String nacionalidad, int edad, String genero, String distrito, String estado, String rol) {
+    public m_empleado(String codigo, String tipodocumento, String numerodocumento, String nombre, String apellido, String nacionalidad, int edad, String genero, String distrito, String estado, String rol) {
+        this.codigo = codigo;
         this.tipodocumento = tipodocumento;
         this.numerodocumento = numerodocumento;
         this.nombre = nombre;
@@ -27,6 +28,14 @@ public class m_empleado {
         this.distrito = distrito;
         this.estado = estado;
         this.rol = rol;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getTipodocumento() {
@@ -108,6 +117,8 @@ public class m_empleado {
     public void setRol(String rol) {
         this.rol = rol;
     }
+
+    
     
     
     

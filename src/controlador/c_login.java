@@ -68,14 +68,18 @@ public class c_login implements ActionListener {
             }
         }
     }
-
+    
+    
     public static void mostrar() {
         vista.setVisible(true);
     }
-
+    
+    
     public static void ocultar() {
         vista.setVisible(false);
     }
+    
+    
     public void mostrarAdministrador (){
         vp.m_ventas.setVisible(true);
         vp.m_producto.setVisible(true);
@@ -94,6 +98,7 @@ public class c_login implements ActionListener {
         vp.tb_productosMASvendidos.setVisible(true);
         vp.tb_reportes.setVisible(true);    
     }
+    
     
     public void mostrarintenvendedor() {
         vp.m_ventas.setVisible(true);
@@ -114,7 +119,8 @@ public class c_login implements ActionListener {
         vp.tb_reportes.setVisible(false);
         
     }
-
+    
+    
     public void mostrarintenReponedor() {
         vp.m_ventas.setVisible(false);
         vp.m_producto.setVisible(true);
@@ -133,7 +139,8 @@ public class c_login implements ActionListener {
         vp.tb_productosMASvendidos.setVisible(false);
         vp.tb_reportes.setVisible(false);
     }
-
+    
+    
     public void mostrarintenAlmacenero() {
         vp.m_ventas.setVisible(false);
         vp.m_producto.setVisible(true);
@@ -153,4 +160,5 @@ public class c_login implements ActionListener {
         vp.tb_reportes.setVisible(false);
     }
     
+        
 }

@@ -34,10 +34,18 @@ public class vi_productoPiso extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         txtLimiteStock = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         boton_guardar = new javax.swing.JButton();
         boton_nuevo = new javax.swing.JButton();
+        boton_actualizar = new javax.swing.JButton();
+        boton_cargar = new javax.swing.JButton();
+        boton_mostrar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("PRODUCTO PISO");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Codigo :");
@@ -48,24 +56,24 @@ public class vi_productoPiso extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Categoria :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-        getContentPane().add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 21, 142, -1));
-        getContentPane().add(txtdescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 49, 394, -1));
+        getContentPane().add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 170, -1));
+        getContentPane().add(txtdescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 394, -1));
 
-        getContentPane().add(cbxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 77, 142, -1));
+        getContentPane().add(cbxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 170, -1));
 
         jLabel4.setText("Stock Actual :");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 108, -1, -1));
-        getContentPane().add(txtstockActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 105, 145, -1));
+        getContentPane().add(txtstockActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 170, -1));
 
         jLabel5.setText("Precio Unitario :");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 136, -1, -1));
-        getContentPane().add(txtprecioUni, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 133, 145, -1));
+        getContentPane().add(txtprecioUni, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 170, -1));
 
-        jLabel6.setText("Limite Stock :");
+        jLabel6.setText("Limite Stock : ");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 167, -1, -1));
-        getContentPane().add(txtLimiteStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 158, 146, -1));
+        getContentPane().add(txtLimiteStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 170, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -76,22 +84,34 @@ public class vi_productoPiso extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 197, 613, 214));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 204, 723, 205));
 
         boton_guardar.setText("Guardar");
-        getContentPane().add(boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 163, -1, -1));
+        getContentPane().add(boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 100, -1));
 
         boton_nuevo.setText("nuevo");
-        getContentPane().add(boton_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, -1, -1));
+        getContentPane().add(boton_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+
+        boton_actualizar.setText("Actualizar");
+        getContentPane().add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 100, -1));
+
+        boton_cargar.setText("Cargar");
+        getContentPane().add(boton_cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
+
+        boton_mostrar.setText("M. Tablas");
+        getContentPane().add(boton_mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton boton_actualizar;
+    public javax.swing.JButton boton_cargar;
     public javax.swing.JButton boton_guardar;
+    public javax.swing.JButton boton_mostrar;
     public javax.swing.JButton boton_nuevo;
     public javax.swing.JComboBox<String> cbxCategoria;
     private javax.swing.JLabel jLabel1;
@@ -101,7 +121,7 @@ public class vi_productoPiso extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable tabla;
     public javax.swing.JTextField txtLimiteStock;
     public javax.swing.JTextField txtcodigo;
     public javax.swing.JTextField txtdescripcion;

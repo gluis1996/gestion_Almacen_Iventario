@@ -21,7 +21,7 @@ public class m_categoriaDAO {
         modelo = new DefaultTableModel(null, cabecera);
         tabla.setModel(modelo);
         modelo.setRowCount(0);
-        ResultSet rs = Conexion.consulta("{call sp_listar_categoria}");
+        ResultSet rs = Conexion.consulta("Select *from categoria");
         try {
             while (rs.next()) {
                 Vector v = new Vector();
@@ -37,7 +37,7 @@ public class m_categoriaDAO {
     }
 
     public void registar(m_categoria mc) {
-        String consulta = "{call sp_insertar_productoPiso(?)}";
+        String consulta = "{call sp_insertar_categoria(?)}";
         try {
             CallableStatement cs = Conexion.getConexion().prepareCall(consulta);
             cs.setString(1, mc.getNombre());

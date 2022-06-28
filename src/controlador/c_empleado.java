@@ -9,6 +9,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import modelo.*;
 import java.sql.*;
+import java.text.DecimalFormat;
 import javax.swing.table.DefaultTableModel;
 
 public class c_empleado implements ActionListener {
@@ -17,19 +18,21 @@ public class c_empleado implements ActionListener {
     private m_empleadoDAO edao;
     private m_empleado e;
     private ButtonGroup brt = new ButtonGroup();
-    ;
+    
     private ResultSet rs;
     int contador;
 
     public c_empleado(vi_empleado vista) {
         this.vista = vista;
         agruparBotones();
-        this.vista.boton_asignacion.addActionListener(this);
+        this.vista.boton_Nuevo.addActionListener(this);
         this.vista.BTN_MostrarEmpleado.addActionListener(this);
         this.vista.BTN_Registrar.addActionListener(this);
-        this.vista.BTN_Editar.addActionListener(this);
+        this.vista.BTN_Cargar.addActionListener(this);
+        this.vista.boton_Eliminar.addActionListener(this);
+        this.vista.boton_mostrar_usuario.addActionListener(this);
     }
-
+    
     void agruparBotones() {
         brt.add(vista.rb_Activo);
         brt.add(vista.rb_Inactivo);
@@ -38,22 +41,37 @@ public class c_empleado implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object ev = e.getSource();
-        if (ev.equals(vista.boton_asignacion)) {
-            JOptionPane.showMessageDialog(null, "exito");
+        if (ev.equals(vista.boton_Nuevo)) {
+            generarcodigo();
         } else if (ev.equals(vista.BTN_MostrarEmpleado)) {
             edao = new m_empleadoDAO();
             edao.llenarEnTabla(vista.tabla1);
         } else if (ev.equals(vista.BTN_Registrar)) {
             RegistrarEmpleado();
-        }else if (ev.equals(vista.BTN_Editar)){
-        cargaratabla();        
+        } else if (ev.equals(vista.BTN_Cargar)) {
+            cargaratabla();
+        } else if (ev.equals(vista.boton_Eliminar)) {
+            eliminar();
+            cargaratabla();
+        }else if (ev.equals(vista.boton_mostrar_usuario)){
+            edao = new m_empleadoDAO();
+            edao.llenarTablaUsuario(vista.tabla1);
         }
+        
+    }
+
+    public void generarcodigo() {
+        m_empleadoDAO fun = new m_empleadoDAO();
+        DecimalFormat df = new DecimalFormat("00000");
+        String c = ("E" + String.valueOf(df.format(fun.generarCodigo())));
+        vista.txtCodigo.setText(c);
     }
 
     public void RegistrarEmpleado() {
         try {
             e = new m_empleado();
             edao = new m_empleadoDAO();
+            e.setCodigo(vista.txtCodigo.getText());
             e.setTipodocumento(vista.cbxTdocument.getSelectedItem().toString());
             e.setNumerodocumento(vista.txtNdocumento.getText());
             e.setNombre(vista.txtNombre.getText());
@@ -75,8 +93,10 @@ public class c_empleado implements ActionListener {
                 e.setEstado("I");
             }
 
-            if (vista.cbxTdocument.getSelectedItem().toString().isEmpty() || vista.txtNdocumento.getText().isEmpty()
-                    || vista.txtNombre.getText().isEmpty() || vista.txtApellido.getText().isEmpty()
+            if (vista.cbxTdocument.getSelectedItem().toString().isEmpty()
+                    || vista.txtNdocumento.getText().isEmpty()
+                    || vista.txtNombre.getText().isEmpty()
+                    || vista.txtApellido.getText().isEmpty()
                     || vista.txtNacionalidad.getText().isEmpty() || vista.txtEdad.getText().isEmpty()
                     || vista.cbxGenero.getSelectedItem().toString().isEmpty() || vista.txtDistrito.getText().isEmpty()
                     || vista.CBX_roles.getSelectedItem().toString().isEmpty()) {
@@ -130,13 +150,28 @@ public class c_empleado implements ActionListener {
         int fila = vista.tabla1.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "sin datos");
-
         } else {
             String codigo = (String) vista.tabla1.getValueAt(fila, 0);
             vista.txtCodigo.setText(codigo);
-            } 
+        }
+    }
+
+    public void eliminar() {
+        try {
+        e = new m_empleado();
+        edao = new m_empleadoDAO();
+        if (!vista.txtCodigo.getText().equals(""));
+            int confirmacion = JOptionPane.showConfirmDialog(null, "Desea Eliminar ", "Peligro", JOptionPane.OK_CANCEL_OPTION,
+                            JOptionPane.INFORMATION_MESSAGE);
+            if (confirmacion == 0){
+            e.setCodigo(vista.txtCodigo.getText());
+            edao.eliminar(e);
+            JOptionPane.showMessageDialog(null, "Exito");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "UPPsERROR "+ e);
         }
 
-    
+    }
 
 }

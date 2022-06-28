@@ -22,10 +22,21 @@ public class Conexion {
         Conexion.IpRemoto = IpRemoto;
     }
 
-    public static Connection getConexion() {
+   public static Connection getConexion() {
+        try {
+            String db = "jdbc:mysql://localhost:3306/licoreria";
+            con = DriverManager.getConnection(db, "root", "");
+            return con;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        return null;
+    }
+    
+   /* public static Connection getConexion() {
         status = false;
         
-        String url = "jdbc:sqlserver://sqlpruebasmvc.database.windows.net:1433;databaseName=Licoreria";
+        String url = "jdbc:sqlserver://192.168.100.45:1433;databaseName=Licoreria";
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         } catch (ClassNotFoundException e) {
@@ -33,17 +44,17 @@ public class Conexion {
         }
 
         try {
-            con = DriverManager.getConnection(url, "lgonzalo", "@lmgv0704");
+            con = DriverManager.getConnection(url, "sa", "gonzalo1996");
             status = true;
             //JOptionPane.showMessageDialog(null, "conexion Exitosa");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "error " + e);
         }
         return con;
-    }
+    }*/
    
     
-    public static ResultSet consulta(String consulta) {
+   public static ResultSet consulta(String consulta) {
         Connection con = getConexion();
         Statement declara;
         try {

@@ -36,7 +36,7 @@ public class c_categoria implements ActionListener {
     }
 
     public void ingresar() {
-        try {
+      try {
             c = new m_categoria();
             cd = new m_categoriaDAO();
             c.setNombre(vista.txtnombre.getText());
@@ -51,7 +51,7 @@ public class c_categoria implements ActionListener {
                         contador = rs.getInt(1);
                     }
                 } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Erroe en la consulta " + e);
+                    JOptionPane.showMessageDialog(null, "Error en la consulta " + e);
                 }
                 if (contador >= 1) {
                     JOptionPane.showMessageDialog(null, "Ya exite la categoria", "Error", JOptionPane.INFORMATION_MESSAGE);
