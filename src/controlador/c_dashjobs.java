@@ -1,7 +1,7 @@
 package controlador;
 
-import vista.v_DashJobs;
-import vista.v_login;
+import vistav.v_DashJobs;
+import vistav.v_login;
 import controlador.c_login;
 import VentanasInternasJob.*;
 import java.awt.event.ActionEvent;

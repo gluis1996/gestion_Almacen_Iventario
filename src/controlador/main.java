@@ -1,6 +1,6 @@
 package controlador;
 
-import vista.*;
+import vistav.v_login;
 import controlador.*;
 
 public class main {

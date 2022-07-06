@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
+package vistav;
 import controlador.c_principal;
 import java.awt.Frame;
 public class v_principal extends javax.swing.JFrame {
@@ -253,7 +253,7 @@ public class v_principal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -278,7 +278,7 @@ public class v_principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JDesktopPane ADescritorio;
+    public static javax.swing.JDesktopPane ADescritorio;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JToolBar jToolBar1;
     public javax.swing.JMenu m_almacen;

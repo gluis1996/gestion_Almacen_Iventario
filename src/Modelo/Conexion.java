@@ -9,18 +9,9 @@ import javax.swing.JOptionPane;
 
 public class Conexion {
     static Connection con = null;
-    static String usuario;
-    static String password;
-    static boolean status = false;
-    static String IpRemoto;
+    static ResultSet respuesta = null;
     
-    public static String getIpRemoto() {
-        return IpRemoto;
-    }
-
-    public static void setIpRemoto(String IpRemoto) {
-        Conexion.IpRemoto = IpRemoto;
-    }
+    
 
    public static Connection getConexion() {
         try {
@@ -56,10 +47,10 @@ public class Conexion {
     
    public static ResultSet consulta(String consulta) {
         Connection con = getConexion();
-        Statement declara;
+        Statement declara = null;
         try {
             declara = con.createStatement();
-            ResultSet respuesta = declara.executeQuery(consulta);
+            respuesta = declara.executeQuery(consulta);
             return respuesta;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "error al obtener datos");

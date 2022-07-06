@@ -11,9 +11,9 @@ public class m_loginDAO {
     
     Conexion con;
     
-    public m_loginDAO(){
+    /*public m_loginDAO(){
     con = new Conexion();
-    }
+    }*/
     
     public ArrayList<m_login> lo(String user,String pass){
     

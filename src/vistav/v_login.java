@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
+package vistav;
 public class v_login extends javax.swing.JFrame {
 
     public v_login() {

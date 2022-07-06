@@ -11,11 +11,11 @@ public class m_categoriaDAO {
     Conexion con;
     Connection cn;
 
-    public m_categoriaDAO() {
+    /*public m_categoriaDAO() {
         con = new Conexion();
-    }
+    }*/
 
-    public void mostarTabla(JTable tabla) {
+    public void mostarTabla(JTable tabla){
         DefaultTableModel modelo;
         String cabecera[] = {"id", "nombre"};
         modelo = new DefaultTableModel(null, cabecera);
@@ -47,5 +47,7 @@ public class m_categoriaDAO {
             JOptionPane.showMessageDialog(null, "Erroe en regitrar Categoria" + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    
 
 }

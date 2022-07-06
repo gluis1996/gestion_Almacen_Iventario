@@ -9,9 +9,9 @@ public class m_empleadoDAO {
     private Conexion con ;
     private Connection cn = Conexion.getConexion();
 
-    public m_empleadoDAO() {
+    /*public m_empleadoDAO() {
        con = new Conexion();
-    }
+    }*/
     
        ResultSet rs;
        
@@ -66,7 +66,7 @@ public class m_empleadoDAO {
     }
     
     
-    public void llenarEnTabla(JTable tabla){
+    public void llenarEnTabla(JTable tabla)  {
         DefaultTableModel  modelo;
         String cabecera []={"Cod", "Documento", "Numero", "Nombre", "Apellido", "Nacionalidad", "Edad", "Genero", "Distrito", "Estado"};
         modelo = new DefaultTableModel(null, cabecera);
@@ -96,7 +96,7 @@ public class m_empleadoDAO {
         
         }
     
-    public void llenarTablaUsuario(JTable tabla){
+    public void llenarTablaUsuario(JTable tabla) {
         DefaultTableModel  modelo;
         String cabecera []={"Usuario", "Contraseña", "Fecha Creacion", "IdEmpleado", "Rol"};
         modelo = new DefaultTableModel(null, cabecera);
