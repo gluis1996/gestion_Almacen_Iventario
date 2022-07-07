@@ -27,6 +27,7 @@ public class c_compra implements ActionListener {
     public c_compra(vi_compra vista) {
         this.vista = vista;
         mostrar();
+        buscarVendedor();
         this.vista.boton_buscarProducto.addActionListener(this);
         this.vista.boton_añadir.addActionListener(this);
         this.vista.cbxTipoDePago.addActionListener(this);
@@ -254,9 +255,9 @@ public class c_compra implements ActionListener {
             ResultSet rs = ps.executeQuery();
             try {
                 while (rs.next()) {
-                    vista.txtNombrePro.setText(rs.getString(1));
-                    vista.txtprecio.setText(String.valueOf(rs.getDouble(2)));
-                    vista.txtStock.setText(String.valueOf(rs.getInt(3)));
+                    vista.txtNombrePro.setText(rs.getString(2));
+                    vista.txtprecio.setText(String.valueOf(rs.getDouble(5)));
+                    vista.txtStock.setText(String.valueOf(rs.getInt(4)));
                 }
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error111 Busqueda" + e);

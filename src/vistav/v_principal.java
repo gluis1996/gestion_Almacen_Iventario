@@ -29,6 +29,11 @@ public class v_principal extends javax.swing.JFrame {
         tb_productoAlmacen = new javax.swing.JButton();
         tb_entregas = new javax.swing.JButton();
         tb_ingresoAlmacen = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblcod = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbluser = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         m_resumenVentas = new javax.swing.JMenu();
         mrv_resumenVenta = new javax.swing.JMenuItem();
@@ -58,7 +63,7 @@ public class v_principal extends javax.swing.JFrame {
         ADescritorio.setLayout(ADescritorioLayout);
         ADescritorioLayout.setHorizontalGroup(
             ADescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 835, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         ADescritorioLayout.setVerticalGroup(
             ADescritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,6 +120,41 @@ public class v_principal extends javax.swing.JFrame {
         tb_ingresoAlmacen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tb_ingresoAlmacen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(tb_ingresoAlmacen);
+
+        lblcod.setText("sesion");
+
+        jLabel1.setText("ID");
+
+        jLabel2.setText("User");
+
+        lbluser.setText("user");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(lblcod)
+                .addGap(58, 58, 58)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbluser, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblcod)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(lbluser))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         m_resumenVentas.setText("Resumen Ventas");
 
@@ -213,12 +253,20 @@ public class v_principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(ADescritorio)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ADescritorio))
         );
@@ -279,8 +327,13 @@ public class v_principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane ADescritorio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar jToolBar1;
+    public static javax.swing.JLabel lblcod;
+    public javax.swing.JLabel lbluser;
     public javax.swing.JMenu m_almacen;
     public javax.swing.JMenu m_empleados;
     public javax.swing.JMenu m_producto;

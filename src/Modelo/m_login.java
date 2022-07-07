@@ -4,7 +4,8 @@ public class m_login {
     private String usuario;
     private String contraseña;
     private String rol;
-
+    private String idemp;
+    
     public m_login() {
         this.usuario = "";
         this.contraseña = "";
@@ -34,4 +35,14 @@ public class m_login {
     public void setRol(String rol) {
         this.rol = rol;
     }
+     public String getIdemp() {
+        return idemp;
+    }
+
+    public void setIdemp(String idemp) {
+        this.idemp = idemp;
+    }
+    
+
+    
 }

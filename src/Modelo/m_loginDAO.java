@@ -25,7 +25,7 @@ public class m_loginDAO {
         try {
             Conectar = Conexion.getConexion();
             if(Conectar != null){
-                String sql = "select usuario,contraseña,rol from usuario where usuario = ? and contraseña = ?";
+                String sql = "select usuario,contraseña,rol,IdEmpleado from usuario where usuario = ? and contraseña = ?";
                 ps = Conectar.prepareStatement(sql);
                 ps.setString(1, user);
                 ps.setString(2, pass);
@@ -36,7 +36,8 @@ public class m_loginDAO {
                     m_login l = new m_login();
                     l.setUsuario(rs.getString(1));
                     l.setContraseña(rs.getString(2));
-                    l.setRol(rs.getString(3));                    
+                    l.setRol(rs.getString(3));  
+                    l.setIdemp(rs.getString(4));
                     lista.add(l);                    
                 }            
             }

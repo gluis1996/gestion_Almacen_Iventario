@@ -22,7 +22,6 @@ public class m_productoPisoDAO {
     /*public m_productoPisoDAO() {
         con = new Conexion();
     }*/
-
     public void ingresar(m_productoPiso mps) {
         String consulta = "{call sp_insertar_productoPiso(?,?,?,?,?,?)}";
         try {
@@ -76,7 +75,7 @@ public class m_productoPisoDAO {
             while (rs.next()) {
                 c.addItem(rs.getString("cod"));
             }
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "error cargar categoria " + e.getMessage());
         }
@@ -101,22 +100,33 @@ public class m_productoPisoDAO {
                 modelo.addRow(vc);
                 tabla.setModel(modelo);
             }
-            JOptionPane.showMessageDialog(null, "exito");
+           
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error en la Carga", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-   
-    public void disminuir(String idp, int can){
-    String consulta = "update producto_piso set Cantidad_Piso=Cantidad_Piso-? where Idproducto=?";
+
+    public void disminuir(String idp, int can) {
+        String consulta = "update producto_piso set Cantidad_Piso=Cantidad_Piso-? where Idproducto=?";
         try {
             CallableStatement cs = Conexion.getConexion().prepareCall(consulta);
             cs.setInt(1, can);
             cs.setString(2, idp);
             cs.execute();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erroe en disminuir "+e);
-        }  
+            JOptionPane.showMessageDialog(null, "Erroe en disminuir " + e);
+        }
     }
 
+    public void Aumentar(String idp, int can) {
+        String consulta = "update producto_piso set Cantidad_Piso=Cantidad_Piso+? where Idproducto=?";
+        try {
+            CallableStatement cs = Conexion.getConexion().prepareCall(consulta);
+            cs.setInt(1, can);
+            cs.setString(2, idp);
+            cs.execute();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erroe en Aumentar " + e);
+        }
+    }
 }

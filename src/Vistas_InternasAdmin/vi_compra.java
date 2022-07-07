@@ -23,11 +23,11 @@ c_compra c;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtcodigoVendedor = new javax.swing.JTextField();
         txtDocumentoVendedor = new javax.swing.JTextField();
         boton_buscarVendedor = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtnombreVendedor = new javax.swing.JLabel();
+        txtcodigoVendedor = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtnombreProducto = new javax.swing.JTextField();
@@ -84,6 +84,8 @@ c_compra c;
         txtnombreVendedor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtnombreVendedor.setText("...");
 
+        txtcodigoVendedor.setText("....");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -94,8 +96,8 @@ c_compra c;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtcodigoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtcodigoVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtDocumentoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(boton_buscarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -112,9 +114,9 @@ c_compra c;
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtcodigoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDocumentoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boton_buscarVendedor))
+                    .addComponent(boton_buscarVendedor)
+                    .addComponent(txtcodigoVendedor))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -499,7 +501,7 @@ c_compra c;
     public javax.swing.JLabel txtStock;
     public javax.swing.JLabel txtSubtotal;
     public javax.swing.JLabel txtcantidadTotalProductos;
-    public javax.swing.JTextField txtcodigoVendedor;
+    public javax.swing.JLabel txtcodigoVendedor;
     public javax.swing.JLabel txtidCompra;
     public javax.swing.JTextField txtnombreProducto;
     public javax.swing.JLabel txtnombreVendedor;

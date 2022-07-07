@@ -16,6 +16,11 @@ public class c_login implements ActionListener {
     private m_loginDAO ld = new m_loginDAO();
     private v_principal vp = new v_principal();
     private v_DashJobs vd = new v_DashJobs();
+    private m_login l = new m_login();
+    static  String rol = "";
+    static String user ;
+    static String pass ;
+    static String id ;
 
     public c_login(v_login vista) {
         this.vista = vista;
@@ -32,8 +37,8 @@ public class c_login implements ActionListener {
     }
 
     public void ingresar() {
-        String user = vista.txtusuario.getText();
-        String pass = vista.txtpass.getText();
+         user = vista.txtusuario.getText();
+         pass = vista.txtpass.getText();
         if (user.isEmpty() || pass.isEmpty()) {
             JOptionPane.showMessageDialog(null, "digite usuario o contraseña ", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -42,27 +47,37 @@ public class c_login implements ActionListener {
             lista = ld.lo(user, pass);
             for (int i = 0; i < lista.size(); i++) {
                 rol = lista.get(i).getRol();
+                user = lista.get(i).getUsuario();
+                id = lista.get(i).getIdemp();
             }
+            
             if (lista.size() > 0) {
                 if (rol.equalsIgnoreCase("Administrador")) {
                     vista.dispose();
                     vp.setVisible(true);
                     mostrarAdministrador();
+                    vp.lblcod.setText(id);
+                    vp.lbluser.setText(user);
                 } else if (rol.equalsIgnoreCase("Vendedor")) {
                     vista.dispose();
                     vp.setVisible(true);
                     mostrarintenvendedor();
+                    vp.lblcod.setText(id);
+                    vp.lbluser.setText(user);
                     JOptionPane.showMessageDialog(null, "Bienvenido al Vendedor", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 } else if (rol.equalsIgnoreCase("Reponedor")) {
-
                     vista.dispose();
                     vp.setVisible(true);
                     mostrarintenReponedor();
+                    vp.lblcod.setText(id);
+                    vp.lbluser.setText(user);
                     JOptionPane.showMessageDialog(null, "Bienvenido al Reponedor", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 } else if (rol.equalsIgnoreCase("Almacenero")) {
                     vista.dispose();
                     vp.setVisible(true);
                     mostrarintenAlmacenero();
+                    vp.lblcod.setText(id);
+                    vp.lbluser.setText(user);
                     JOptionPane.showMessageDialog(null, "Bienvenido al Reponedor", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 }
             } else {
@@ -119,6 +134,7 @@ public class c_login implements ActionListener {
         vp.tb_productoPiso.setVisible(true);
         vp.tb_productosMASvendidos.setVisible(false);
         vp.tb_reportes.setVisible(false);
+        vp.lblcod.setVisible(true);
         
     }
     
@@ -140,6 +156,7 @@ public class c_login implements ActionListener {
         vp.tb_productoPiso.setVisible(true);
         vp.tb_productosMASvendidos.setVisible(false);
         vp.tb_reportes.setVisible(false);
+        vp.lblcod.setVisible(true);
     }
     
     
@@ -160,6 +177,7 @@ public class c_login implements ActionListener {
         vp.tb_productoPiso.setVisible(true);
         vp.tb_productosMASvendidos.setVisible(false);
         vp.tb_reportes.setVisible(false);
+        vp.lblcod.setVisible(true);
     }
     
         

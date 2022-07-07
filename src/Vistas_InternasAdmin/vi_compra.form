@@ -144,8 +144,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtcodigoVendedor" pref="0" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtcodigoVendedor" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="txtDocumentoVendedor" min="-2" pref="104" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="boton_buscarVendedor" min="-2" pref="39" max="-2" attributes="0"/>
@@ -167,9 +167,9 @@
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtcodigoVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtDocumentoVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="boton_buscarVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtcodigoVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -186,11 +186,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Vendedor :"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtcodigoVendedor">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDocumentoVendedor">
           <AuxValues>
@@ -216,6 +211,14 @@
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="..."/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="txtcodigoVendedor">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="...."/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

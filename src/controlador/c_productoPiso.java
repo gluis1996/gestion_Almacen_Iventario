@@ -7,22 +7,34 @@ import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import javax.swing.*;
 import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+import vistav.v_login;
+import vistav.v_principal;
 
 public class c_productoPiso implements ActionListener {
 
     private vi_productoPiso vista;
+    
     private m_productoPisoDAO mp = new m_productoPisoDAO();
+    private m_detalleReponedorDAO mdrd = new m_detalleReponedorDAO();
     private String codigocategoria;
-
+    private DefaultTableModel modelo;
+    private m_loginDAO l = new m_loginDAO();
+    private m_login ml = new m_login();
+    
     public c_productoPiso(vi_productoPiso vista) {
         this.vista = vista;
-        mp.cargarcategoria(vista.cbxCategoria);
+        vista.txtcodEmpleado.setText(c_login.id);
+        //desabiliar();
+        this.mp.cargarcategoria(vista.cbxCategoria);
         this.vista.boton_guardar.addActionListener(this);
         this.vista.boton_nuevo.addActionListener(this);
         this.vista.cbxCategoria.addActionListener(this);
         this.vista.boton_mostrar.addActionListener(this);
         this.vista.boton_cargar.addActionListener(this);
         this.vista.boton_actualizar.addActionListener(this);
+        this.vista.boton_salir.addActionListener(this);
+        this.vista.boton_suma.addActionListener(this);
     }
 
     @Override
@@ -31,6 +43,7 @@ public class c_productoPiso implements ActionListener {
         if (o.equals(vista.boton_guardar)) {
             registrar();
         } else if (o.equals(vista.boton_nuevo)) {
+            habilitar_guardar();
             generarcodigo();
         } else if (o.equals(vista.cbxCategoria)) {
             cb_codigocategoria();
@@ -40,10 +53,15 @@ public class c_productoPiso implements ActionListener {
             cargartabla();
         } else if (o.equals(vista.boton_actualizar)) {
             actualizarProducto();
+        } else if (o.equals(vista.boton_salir)) {
+            cargarCategorias();
+        } else if (o.equals(vista.boton_suma)) {
+            int a = Integer.parseInt(vista.txtstockActual.getText()) + Integer.parseInt(vista.txtingreso.getText());
+            vista.txtnuevoStock.setText(String.valueOf(a));
         }
 
     }
-
+    
     public void generarcodigo() {
         m_productoPisoDAO fun = new m_productoPisoDAO();
         DecimalFormat df = new DecimalFormat("00000");
@@ -108,25 +126,29 @@ public class c_productoPiso implements ActionListener {
 
     public void actualizarProducto() {
         m_productoPiso p = new m_productoPiso();
+        m_detalleReponedor d = new m_detalleReponedor();
         int contador = 0;
+        int c = Integer.parseInt(vista.txtingreso.getText());
+        d.setIdEmpleado(vista.txtcodEmpleado.getText());
+        d.setIdProducto(vista.txtcodigo.getText());
+        d.setDetalle(vista.txtobs.getText());
         p.setCodigo(vista.txtcodigo.getText());
-        p.setDescripcion(vista.txtdescripcion.getText());
         try {
             if (Integer.parseInt(vista.txtstockActual.getText()) >= 1) {
-                p.setCantidad(Integer.parseInt(vista.txtstockActual.getText()));
-                vista.txtstockActual.requestFocus();
+                p.setCantidad(Integer.parseInt(vista.txtnuevoStock.getText()));
+                d.setCantidadRegistrada(c);
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "verifuqe que sea un numero positivo");
         }
         p.setPrecioUnitario(Double.parseDouble(vista.txtprecioUni.getText()));
         p.setLimiteStock(Integer.parseInt(vista.txtLimiteStock.getText()));
-        int resul = JOptionPane.showConfirmDialog(null, "Desea Actualziar","Atencion",JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE);
-        if (resul == 0){
-        mp.actualizar(p);
-        limpiar();
+        int resul = JOptionPane.showConfirmDialog(null, "Desea Actualziar", "Atencion", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (resul == 0) {
+            mp.actualizar(p);
+            mdrd.ingresaDetalleReponedor(d);
+            limpiar();
         }
-        
 
     }
 
@@ -151,6 +173,11 @@ public class c_productoPiso implements ActionListener {
         }
     }
 
+    public void cargarCategorias() {
+        vista.cbxCategoria.removeAllItems();
+        mp.cargarcategoria(vista.cbxCategoria);
+    }
+
     public void limpiar() {
         vista.txtcodigo.setText("");
         vista.txtdescripcion.setText("");
@@ -160,6 +187,30 @@ public class c_productoPiso implements ActionListener {
         vista.txtLimiteStock.setText("");
         vista.txtdescripcion.requestFocus();
 
+    }
+
+    public void desabiliar() {
+        vista.boton_cargar.setEnabled(true);
+        vista.boton_nuevo.setEnabled(true);
+        vista.boton_mostrar.setEnabled(false);
+        vista.boton_actualizar.setEnabled(false);
+        vista.boton_guardar.setEnabled(false);
+    }
+
+    public void habilitar_guardar() {
+        vista.boton_cargar.setEnabled(false);
+        vista.boton_nuevo.setEnabled(true);
+        vista.boton_mostrar.setEnabled(true);
+        vista.boton_actualizar.setEnabled(false);
+        vista.boton_guardar.setEnabled(true);
+    }
+
+    public void cargar() {
+        vista.boton_cargar.setEnabled(true);
+        vista.boton_nuevo.setEnabled(true);
+        vista.boton_mostrar.setEnabled(false);
+        vista.boton_actualizar.setEnabled(true);
+        vista.boton_guardar.setEnabled(false);
     }
 
 }
