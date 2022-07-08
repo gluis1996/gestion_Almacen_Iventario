@@ -78,7 +78,7 @@ public class c_productoPiso implements ActionListener {
 
         try {
             if (Integer.parseInt(vista.txtstockActual.getText()) >= 1) {
-                p.setCantidad(Integer.parseInt(vista.txtstockActual.getText()));
+                p.setCantidad(Integer.parseInt(vista.txtingreso.getText()));
                 vista.txtstockActual.requestFocus();
             }
         } catch (NumberFormatException e) {
@@ -134,7 +134,7 @@ public class c_productoPiso implements ActionListener {
         d.setDetalle(vista.txtobs.getText());
         p.setCodigo(vista.txtcodigo.getText());
         try {
-            if (Integer.parseInt(vista.txtstockActual.getText()) >= 1) {
+            if (Integer.parseInt(vista.txtstockActual.getText()) >= 0) {
                 p.setCantidad(Integer.parseInt(vista.txtnuevoStock.getText()));
                 d.setCantidadRegistrada(c);
             }

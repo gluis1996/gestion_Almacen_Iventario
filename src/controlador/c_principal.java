@@ -28,6 +28,8 @@ public class c_principal implements ActionListener{
     private vi_Ingreso_a_Piso vip = new vi_Ingreso_a_Piso();
     private vi_tabla_ProductoPiso vtp = new vi_tabla_ProductoPiso();
     private vi_detalleIngreso vdi = new vi_detalleIngreso();
+    //proveedor
+    private vi_proveedores vpro = new vi_proveedores();
     
     
     
@@ -36,12 +38,13 @@ public class c_principal implements ActionListener{
         this.vista.tb_empleados.addActionListener(this);
         this.vista.mv_clientes.addActionListener(this);
         this.vista.ms_salir.addActionListener(this);
-        this.vista.ma_proveedor.addActionListener(this);
         this.vista.mp_categoria.addActionListener(this);
         this.vista.mp_productopiso.addActionListener(this);
         this.vista.mv_nuevaVenta.addActionListener(this);
         this.vista.mr_ingresoapiso.addActionListener(this);
         this.vista.mr_detalleIngreso.addActionListener(this);
+        //proveedor        
+        this.vista.ma_proveedor.addActionListener(this);
     }
 
     @Override
@@ -53,8 +56,6 @@ public class c_principal implements ActionListener{
         }else if (ev.equals(vista.ms_salir)){
             vista.dispose();
             c_login.mostrar();
-        }else if (ev.equals(vista.ma_proveedor)){
-            JOptionPane.showMessageDialog(null, "exito");
         }else if (ev.equals(vista.mp_categoria)){
             v_principal.ADescritorio.add(vc);
             vc.setVisible(true);
@@ -76,7 +77,14 @@ public class c_principal implements ActionListener{
             v_principal.ADescritorio.add(vdi);
             vdi.lblcodi.setText(vista.lblcod.getText());
             vdi.setVisible(true);
+            //area proveedores
+        }else if (ev.equals(vista.ma_proveedor)){
+            v_principal.ADescritorio.add(vpro);
+            //v.lblcodi.setText(vista.lblcod.getText());
+            vpro.setVisible(true);
         }
+        
+        
         
     }
 

@@ -33,6 +33,11 @@ public class vi_detalleIngreso extends javax.swing.JInternalFrame {
         boton_mostrar = new javax.swing.JButton();
         lblcodi = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

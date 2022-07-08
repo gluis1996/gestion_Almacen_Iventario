@@ -35,6 +35,11 @@ c_tabla_ProductoPiso c;
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         jLabel1.setText("Buscar");
 
         boton_buscar.setText("Buscar");

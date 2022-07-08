@@ -25,7 +25,7 @@ public class m_loginDAO {
         try {
             Conectar = Conexion.getConexion();
             if(Conectar != null){
-                String sql = "select usuario,contraseña,rol,IdEmpleado from usuario where usuario = ? and contraseña = ?";
+                String sql = "call sp_buscar_Usuario(?,?)";
                 ps = Conectar.prepareStatement(sql);
                 ps.setString(1, user);
                 ps.setString(2, pass);

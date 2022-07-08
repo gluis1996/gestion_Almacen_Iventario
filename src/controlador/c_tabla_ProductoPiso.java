@@ -27,7 +27,7 @@ public class c_tabla_ProductoPiso implements ActionListener{
 
     public c_tabla_ProductoPiso(vi_tabla_ProductoPiso vista) {
         this.vista = vista;
-        mp.llenarEnTabla(vista.tabla);
+        //mp.llenarEnTabla(vista.tabla);
         this.vista.boton_buscar.addActionListener(this);
         this.vista.boton_todo.addActionListener(this);
     }

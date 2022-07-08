@@ -53,6 +53,7 @@ public class vi_empleado extends javax.swing.JInternalFrame {
         cbxGenero = new javax.swing.JComboBox<>();
         boton_Eliminar = new javax.swing.JButton();
         boton_mostrar_usuario = new javax.swing.JButton();
+        boton_actualizar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -168,7 +169,6 @@ public class vi_empleado extends javax.swing.JInternalFrame {
         jLabel2.setText("Rol:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
 
-        CBX_roles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccion", "Vendedor", "Reponedor", "Almacenero" }));
         jPanel1.add(CBX_roles, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 170, -1));
 
         jButton2.setText("salir");
@@ -187,6 +187,9 @@ public class vi_empleado extends javax.swing.JInternalFrame {
 
         boton_mostrar_usuario.setText("Mostrar Usuarios");
         jPanel1.add(boton_mostrar_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 110, -1));
+
+        boton_actualizar.setText("Actualizar");
+        jPanel1.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -337,6 +340,7 @@ public class vi_empleado extends javax.swing.JInternalFrame {
     public javax.swing.JComboBox<String> CBX_roles;
     public javax.swing.JButton boton_Eliminar;
     public javax.swing.JButton boton_Nuevo;
+    public javax.swing.JButton boton_actualizar;
     public javax.swing.JButton boton_mostrar_usuario;
     public javax.swing.JComboBox<String> cbxGenero;
     public javax.swing.JComboBox<String> cbxTdocument;

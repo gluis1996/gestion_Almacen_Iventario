@@ -11,12 +11,12 @@ public class m_empleado {
     private String genero;
     private String distrito;
     private String estado;
-    private String rol;
+    private int rol;
 
     public m_empleado() {
     }
 
-    public m_empleado(String codigo, String tipodocumento, String numerodocumento, String nombre, String apellido, String nacionalidad, int edad, String genero, String distrito, String estado, String rol) {
+    public m_empleado(String codigo, String tipodocumento, String numerodocumento, String nombre, String apellido, String nacionalidad, int edad, String genero, String distrito, String estado, int rol) {
         this.codigo = codigo;
         this.tipodocumento = tipodocumento;
         this.numerodocumento = numerodocumento;
@@ -110,11 +110,11 @@ public class m_empleado {
         this.estado = estado;
     }
 
-    public String getRol() {
+    public int getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(int rol) {
         this.rol = rol;
     }
 
