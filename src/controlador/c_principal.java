@@ -30,46 +30,102 @@ public class c_principal implements ActionListener{
     private vi_detalleIngreso vdi = new vi_detalleIngreso();
     //proveedor
     private vi_proveedores vpro = new vi_proveedores();
+    private vi_ingresoAlmacen via = new vi_ingresoAlmacen();
+    //ingreso almacen
+    private vi_tabla_productoAlmacen vta = new vi_tabla_productoAlmacen();
     
     
     
     public c_principal(v_principal vista) {
         this.vista = vista;
-        this.vista.tb_empleados.addActionListener(this);
+        //area empleado
+        this.vista.boton_empleado.addActionListener(this);
+        this.vista.me_nuevoEmpleado.addActionListener(this);
+        //area venta
         this.vista.mv_clientes.addActionListener(this);
-        this.vista.ms_salir.addActionListener(this);
+        this.vista.mv_nuevaVenta.addActionListener(this);
+        this.vista.boton_nueva_Venta.addActionListener(this);
+        //area producto
+        this.vista.mp_productoAlmacen.addActionListener(this);
         this.vista.mp_categoria.addActionListener(this);
         this.vista.mp_productopiso.addActionListener(this);
-        this.vista.mv_nuevaVenta.addActionListener(this);
+        this.vista.tb_productoPiso.addActionListener(this);
+        //area almacen 
+        this.vista.ma_proveedor.addActionListener(this);
+        this.vista.ma_ingresarAlmacen.addActionListener(this);
+        this.vista.tb_ingresoAlmacen.addActionListener(this);
+        //area reposicion
         this.vista.mr_ingresoapiso.addActionListener(this);
         this.vista.mr_detalleIngreso.addActionListener(this);
-        //proveedor        
-        this.vista.ma_proveedor.addActionListener(this);
+        
+        //salir 
+        this.vista.ms_salir.addActionListener(this);
+        
+           
+        
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object ev = e.getSource();
-        if (ev.equals(vista.tb_empleados)){
+        //area empleado
+        if (ev.equals(vista.boton_empleado)){
             v_principal.ADescritorio.add(ve);
             ve.setVisible(true);             
-        }else if (ev.equals(vista.ms_salir)){
-            vista.dispose();
-            c_login.mostrar();
-        }else if (ev.equals(vista.mp_categoria)){
-            v_principal.ADescritorio.add(vc);
-            vc.setVisible(true);
-        }else if (ev.equals(vista.mp_productopiso)){
-            v_principal.ADescritorio.add(vtp);              
-            vtp.setVisible(true);
-        }else if (ev.equals(vista.mv_clientes)){
+        }else if (ev.equals(vista.me_nuevoEmpleado)){
+            v_principal.ADescritorio.add(ve);
+            ve.setVisible(true);  
+        }
+        //area Venta
+        else if (ev.equals(vista.mv_clientes)){
             v_principal.ADescritorio.add(vcli);
             vcli.setVisible(true);
         }else if (ev.equals(vista.mv_nuevaVenta)){
             v_principal.ADescritorio.add(vcp);
             vcp.txtcodigoVendedor.setText(vista.lblcod.getText());
             vcp.setVisible(true);
-        }else if (ev.equals(vista.mr_ingresoapiso)){
+        }else if (ev.equals(vista.boton_nueva_Venta)){
+            v_principal.ADescritorio.add(vcp);
+            vcp.txtcodigoVendedor.setText(vista.lblcod.getText());
+            vcp.setVisible(true);
+        }
+        //area producto
+        else if (ev.equals(vista.mp_productoAlmacen)){
+            v_principal.ADescritorio.add(vta);            
+            vta.setVisible(true);
+        }else if (ev.equals(vista.mp_productopiso)){
+            v_principal.ADescritorio.add(vtp);              
+            vtp.setVisible(true);
+        }else if (ev.equals(vista.mp_categoria)){
+            v_principal.ADescritorio.add(vc);
+            vc.setVisible(true);
+        }else if (ev.equals(vista.tb_productoPiso)){
+            v_principal.ADescritorio.add(vtp);              
+            vtp.setVisible(true);
+        }else if (ev.equals(vista.tb_productoAlmacen)){
+            v_principal.ADescritorio.add(vta);            
+            vta.setVisible(true);
+        }
+        
+        //area almacen tb_ingresoAlmacen
+        
+        else if (ev.equals(vista.ma_ingresarAlmacen)){
+            v_principal.ADescritorio.add(via);
+            via.LBLidEmpleado.setText(vista.lblcod.getText());
+            via.setVisible(true);
+        }else if (ev.equals(vista.ma_proveedor)){
+            v_principal.ADescritorio.add(vpro);
+            //v.lblcodi.setText(vista.lblcod.getText());
+            vpro.setVisible(true);
+        }else if (ev.equals(vista.tb_ingresoAlmacen)){
+            v_principal.ADescritorio.add(via);
+            via.LBLidEmpleado.setText(vista.lblcod.getText());
+            via.setVisible(true);
+        }
+        
+        //area reposicion
+        else if (ev.equals(vista.mr_ingresoapiso)){
             v_principal.ADescritorio.add(vpp);
             vpp.txtcodEmpleado.setText(vista.lblcod.getText());
             vpp.setVisible(true);
@@ -78,18 +134,24 @@ public class c_principal implements ActionListener{
             vdi.lblcodi.setText(vista.lblcod.getText());
             vdi.setVisible(true);
             //area proveedores
-        }else if (ev.equals(vista.ma_proveedor)){
-            v_principal.ADescritorio.add(vpro);
-            //v.lblcodi.setText(vista.lblcod.getText());
-            vpro.setVisible(true);
         }
-        
-        
-        
+        //Salir
+        else if (ev.equals(vista.ms_salir)){
+            vista.dispose();
+            paraElBotonSAlir();
+            c_login.mostrar();
+        }
     }
-
-    
-    
-///mr_detalleIngreso
-    
+    void paraElBotonSAlir(){
+    ve.dispose();
+    vc.dispose();
+    vtp.dispose();
+    vcli.dispose();
+    vcp.dispose();
+    vpp.dispose();
+    vdi.dispose();
+    vpro.dispose();
+    via.dispose();
+    vta.dispose();
+    }
 }

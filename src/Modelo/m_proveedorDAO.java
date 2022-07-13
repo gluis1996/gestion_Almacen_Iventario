@@ -69,7 +69,7 @@ public class m_proveedorDAO {
 
     public void mostrar(JTable tabla) {
         DefaultTableModel modelo;
-        String cabecera[] = {"Id_proveedor", "Razon_social", "Direccion", "Correo", "Contacto", "Contacto_comercial", "Fecha_registro"};
+        String cabecera[] = {"Id_proveedor","RUC"+ "Razon_social", "Direccion", "Correo", "Contacto", "Contacto_comercial", "Fecha_registro"};
         modelo = new DefaultTableModel(null, cabecera);
         tabla.setModel(modelo);
         modelo.setRowCount(0);
@@ -105,5 +105,20 @@ public class m_proveedorDAO {
             JOptionPane.showMessageDialog(null, "Error sql" + e.getMessage());
         }
         return cod;
+    }
+    
+    public String buscarProveedor(String cod){
+        String consulta="select RUC,Razon_Social from proveedor where ruc =('"+cod+"')";
+        rs = Conexion.consulta(consulta);
+        try {
+            while(rs.next()){
+                return rs.getNString(2);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en Buscar "+e);
+            return null;
+        }
+        return null;
+    
     }
 }

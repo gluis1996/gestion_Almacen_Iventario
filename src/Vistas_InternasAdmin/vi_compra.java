@@ -30,7 +30,7 @@ c_compra c;
         txtcodigoVendedor = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        txtnombreProducto = new javax.swing.JTextField();
+        txtIdproducto = new javax.swing.JTextField();
         boton_buscarProducto = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtprecio = new javax.swing.JLabel();
@@ -41,6 +41,7 @@ c_compra c;
         boton_añadir = new javax.swing.JButton();
         boton_eliminar = new javax.swing.JButton();
         txtNombrePro = new javax.swing.JLabel();
+        boton_mostrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -64,6 +65,7 @@ c_compra c;
         txtCodigoCliente = new javax.swing.JTextField();
         txtNombreCliente = new javax.swing.JLabel();
         boton_buscarCliente = new javax.swing.JButton();
+        boton_mostrarCliente = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         txtidCompra = new javax.swing.JLabel();
         boton_nuevo = new javax.swing.JButton();
@@ -146,6 +148,8 @@ c_compra c;
 
         txtNombrePro.setText("....");
 
+        boton_mostrar.setText("M");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -162,19 +166,21 @@ c_compra c;
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtnombreProducto)))
+                        .addComponent(txtIdproducto)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtNombrePro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(boton_buscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 36, Short.MAX_VALUE))
-                    .addComponent(txtNombrePro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(boton_buscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addComponent(boton_mostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(boton_eliminar)
@@ -189,11 +195,13 @@ c_compra c;
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(boton_añadir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(boton_eliminar))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boton_eliminar)
+                            .addComponent(boton_mostrar)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtnombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdproducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombrePro)
                             .addComponent(boton_buscarProducto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -343,6 +351,8 @@ c_compra c;
 
         boton_buscarCliente.setText("B");
 
+        boton_mostrarCliente.setText("M");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -354,7 +364,9 @@ c_compra c;
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(txtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(boton_buscarCliente))
+                        .addComponent(boton_buscarCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(boton_mostrarCliente))
                     .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 38, Short.MAX_VALUE))
         );
@@ -365,7 +377,8 @@ c_compra c;
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boton_buscarCliente))
+                    .addComponent(boton_buscarCliente)
+                    .addComponent(boton_mostrarCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -467,6 +480,8 @@ c_compra c;
     public javax.swing.JButton boton_eliminar;
     public javax.swing.JButton boton_guardar;
     public javax.swing.JButton boton_imprimir;
+    public javax.swing.JButton boton_mostrar;
+    public javax.swing.JButton boton_mostrarCliente;
     public javax.swing.JButton boton_nuevo;
     public javax.swing.JButton boton_salir;
     public javax.swing.JComboBox<String> cbxTipoDePago;
@@ -496,6 +511,7 @@ c_compra c;
     public javax.swing.JTextField txtCodigoCliente;
     public javax.swing.JLabel txtCodigoVenta;
     public javax.swing.JTextField txtDocumentoVendedor;
+    public javax.swing.JTextField txtIdproducto;
     public javax.swing.JLabel txtNombreCliente;
     public javax.swing.JLabel txtNombrePro;
     public javax.swing.JLabel txtStock;
@@ -503,7 +519,6 @@ c_compra c;
     public javax.swing.JLabel txtcantidadTotalProductos;
     public javax.swing.JLabel txtcodigoVendedor;
     public javax.swing.JLabel txtidCompra;
-    public javax.swing.JTextField txtnombreProducto;
     public javax.swing.JLabel txtnombreVendedor;
     public javax.swing.JLabel txtprecio;
     // End of variables declaration//GEN-END:variables

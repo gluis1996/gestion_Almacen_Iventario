@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import Vistas_InternasAdmin.vi_compra;
 import Vistas_InternasAdmin.vi_tabla_ProductoPiso;
 import java.sql.*;
 import java.awt.event.ActionEvent;
@@ -20,31 +21,40 @@ import modelo.m_productoPisoDAO;
  *
  * @author LUIS
  */
-public class c_tabla_ProductoPiso implements ActionListener{
+public class c_tabla_ProductoPiso implements ActionListener {
+
     vi_tabla_ProductoPiso vista;
-   
+
     m_productoPisoDAO mp = new m_productoPisoDAO();
+    vi_compra co = new vi_compra();
+    static String c;
+    static String nombre;
+    static double precio;
+    static int cantidad;
 
     public c_tabla_ProductoPiso(vi_tabla_ProductoPiso vista) {
         this.vista = vista;
         //mp.llenarEnTabla(vista.tabla);
         this.vista.boton_buscar.addActionListener(this);
         this.vista.boton_todo.addActionListener(this);
+        this.vista.boton_cargar.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == vista.boton_buscar){
+        if (e.getSource() == vista.boton_buscar) {
             buscar(vista.tabla);
-        }else if (e.getSource()== vista.boton_todo){
+        } else if (e.getSource() == vista.boton_todo) {
             mp.llenarEnTabla(vista.tabla);
+        } else if (e.getSource() == vista.boton_cargar){
+            cargar(); 
+            vista.dispose();
+        
         }
-    
-    }
-    
 
-   
-     public void buscar(JTable tabla) {
+    }
+
+    public void buscar(JTable tabla) {
         DefaultTableModel modelo;
         String cabecera[] = {"Id", "Nombre", "nombre_categoria", "cantidad", "precio", "limite"};
         modelo = new DefaultTableModel(null, cabecera);
@@ -63,10 +73,25 @@ public class c_tabla_ProductoPiso implements ActionListener{
                 vc.add(rs.getInt(6));
                 modelo.addRow(vc);
                 tabla.setModel(modelo);
-                JOptionPane.showMessageDialog(null,"El prodcuto  : "+ rs.getString(2)+ "\n su cantida es : "+ rs.getInt(4)+"\n su precio es : "+rs.getDouble(5));
+                JOptionPane.showMessageDialog(null, "El prodcuto  : " + rs.getString(2) + "\n su cantida es : " + rs.getInt(4) + "\n su precio es : " + rs.getDouble(5));
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error en la Carga", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    public void cargar() {
+        int fila = vista.tabla.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Sin datos TA");
+
+        } else {
+            c= (String) vista.tabla.getValueAt(fila, 0);
+            nombre= (String) vista.tabla.getValueAt(fila, 1);
+            cantidad = (int) vista.tabla.getValueAt(fila, 3);
+            precio = (double) vista.tabla.getValueAt(fila, 4);       
+        }
+
+    }
+
 }

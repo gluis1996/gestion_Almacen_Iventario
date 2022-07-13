@@ -128,17 +128,6 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="ma_Entregas">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Entregas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ma_EntregasActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ma_ingresarAlmacen">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ingresar Almacen"/>
@@ -225,7 +214,7 @@
           <Component id="ADescritorio" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="100" max="32767" attributes="0"/>
+              <EmptySpace pref="155" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -274,7 +263,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="tb_empleados">
+        <Component class="javax.swing.JButton" name="boton_empleado">
           <Properties>
             <Property name="text" type="java.lang.String" value="Empleados"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -307,7 +296,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="tb_nuevaVenta">
+        <Component class="javax.swing.JButton" name="boton_nueva_Venta">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nueva Venta"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -332,17 +321,6 @@
         <Component class="javax.swing.JButton" name="tb_productoAlmacen">
           <Properties>
             <Property name="text" type="java.lang.String" value="Producto Almacen"/>
-            <Property name="focusable" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="verticalTextPosition" type="int" value="3"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="tb_entregas">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Entregas"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>

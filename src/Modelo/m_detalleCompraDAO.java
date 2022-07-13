@@ -60,4 +60,6 @@ public class m_detalleCompraDAO {
      return  modelo;
      }
     
+     
+     
 }

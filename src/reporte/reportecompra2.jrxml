@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportecompra2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cf15dea1-218e-4b04-94da-3367287f2455">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="14"/>
+	<parameter name="idcompra" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     cliente.`docuemnto` AS cliente_docuemnto,
+     cliente.`tipoDocumento` AS cliente_tipoDocumento,
+     cliente.`docuemnto` AS cliente_docuemnto,
+     concat(cliente.`nombre`,' ',cliente.`apellido`) ,
+     producto_piso.`Idproducto` AS producto_piso_Idproducto,
+     producto.`Descripcion` AS producto_Descripcion,
+     compra.`total` AS compra_total,
+     compra.`comprovante` AS compra_comprovante,
+     compra.`numero_comprovante` AS compra_numero_comprovante,
+     compra.`cantidadTotal` AS compra_cantidadTotal,
+     detalle_compra.`Cantidad` AS detalle_compra_Cantidad,
+     detalle_compra.`Precio_Unitario` AS detalle_compra_Precio_Unitario,
+     detalle_compra.`sub_total` AS detalle_compra_sub_total,
+     compra.`Fecha_Compra` AS compra_Fecha_Compra,
+     (SUM(detalle_compra.sub_total)) AS TOTAL
+FROM
+     `cliente` cliente INNER JOIN `compra` compra ON cliente.`IdCliente` = compra.`IdCliente`
+     INNER JOIN `detalle_compra` detalle_compra ON compra.`idCompra` = detalle_compra.`idCompra`
+     INNER JOIN `producto_piso` producto_piso ON detalle_compra.`Idproducto` = producto_piso.`Idproducto`
+     INNER JOIN `producto` producto ON producto_piso.`Idproducto` = producto.`Idproducto`
+     where detalle_compra.idCompra=$P{idcompra}]]>
+	</queryString>
+	<field name="cliente_docuemnto" class="java.lang.String"/>
+	<field name="cliente_tipoDocumento" class="java.lang.String"/>
+	<field name="concat(cliente.`nombre`,&apos; &apos;,cliente.`apellido`)" class="java.lang.String"/>
+	<field name="producto_piso_Idproducto" class="java.lang.String"/>
+	<field name="producto_Descripcion" class="java.lang.String"/>
+	<field name="compra_total" class="java.lang.Double"/>
+	<field name="compra_comprovante" class="java.lang.String"/>
+	<field name="compra_numero_comprovante" class="java.lang.String"/>
+	<field name="compra_cantidadTotal" class="java.lang.Integer"/>
+	<field name="detalle_compra_Cantidad" class="java.lang.Integer"/>
+	<field name="detalle_compra_Precio_Unitario" class="java.lang.Double"/>
+	<field name="detalle_compra_sub_total" class="java.lang.Double"/>
+	<field name="compra_Fecha_Compra" class="java.sql.Timestamp"/>
+	<field name="TOTAL" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="213" splitType="Stretch">
+			<rectangle>
+				<reportElement x="534" y="10" width="148" height="79" uuid="d4a171c4-fc11-4eef-9f48-338e69172934"/>
+			</rectangle>
+			<textField>
+				<reportElement x="22" y="98" width="100" height="20" uuid="820e31ec-daaf-44ee-8811-0a40e4390124"/>
+				<textFieldExpression><![CDATA[$F{concat(cliente.`nombre`,' ',cliente.`apellido`)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="572" y="44" width="73" height="20" uuid="aa81ee9d-4b2e-4b53-80bc-82d5c9fa554b"/>
+				<text><![CDATA[RUC 00000000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="372" y="98" width="100" height="20" uuid="f277215c-39b6-4340-8bdb-cf85bf284baa"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="600" y="42" width="100" height="20" uuid="5402d449-1e0f-4c28-9f9d-cd75602b658f"/>
+				<textFieldExpression><![CDATA[$F{compra_comprovante}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="534" y="40" width="148" height="20" uuid="d86ec597-56e9-4f90-b14c-ad7cd7ccb9a9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="184" width="672" height="29" uuid="5169692c-b5f4-458b-9358-5f464fb21d1d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="22" y="193" width="100" height="20" uuid="7081f4d0-4e0f-478a-8599-39ff9f69d104"/>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="193" width="100" height="20" uuid="d047cb4d-dd84-4402-9376-ee59ebc3ba23"/>
+				<text><![CDATA[PRECIO U]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="510" y="193" width="100" height="20" uuid="862a3e87-893d-48a2-83e2-9cb1fe9a1729"/>
+				<text><![CDATA[SUB TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="193" width="100" height="20" uuid="0e700574-bcaf-4d7e-a63a-b85e85182385"/>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="578" y="20" width="73" height="20" uuid="a7220458-e309-4c7e-820a-211283d26e8d"/>
+				<text><![CDATA[RUC 00000000]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="551" y="42" width="100" height="20" uuid="981629c8-c4af-4fef-afb1-608fe21d42bf"/>
+				<textFieldExpression><![CDATA[$F{compra_comprovante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="551" y="64" width="100" height="20" uuid="06d22ee9-5523-4b3d-8def-581af42e6a80"/>
+				<textFieldExpression><![CDATA[$F{compra_numero_comprovante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="25" y="52" width="100" height="20" uuid="c7134749-1b22-45f4-be7d-8b6a5aa53506"/>
+				<textFieldExpression><![CDATA[$F{cliente_tipoDocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="52" width="100" height="20" uuid="8ebbb2af-9bc6-4c41-981f-07bf057de5cb"/>
+				<textFieldExpression><![CDATA[$F{cliente_docuemnto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="98" width="100" height="20" uuid="1fdd4f53-a300-4ac3-a323-24b6d09d2050"/>
+				<textFieldExpression><![CDATA[$F{compra_Fecha_Compra}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="22" y="21" width="100" height="20" uuid="442c0627-2faf-4407-abe6-d647bee1d8b2"/>
+				<textFieldExpression><![CDATA[$F{detalle_compra_Cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="143" y="21" width="100" height="20" uuid="f2bf9318-44c0-477f-9b53-eae96975e3f2"/>
+				<textFieldExpression><![CDATA[$F{producto_Descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="21" width="100" height="20" uuid="33c28624-f88e-43de-9859-38471fdff827"/>
+				<textFieldExpression><![CDATA[$F{detalle_compra_Precio_Unitario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="21" width="100" height="20" uuid="aa977cb8-98f0-49b3-b995-b4053f54502e"/>
+				<textFieldExpression><![CDATA[$F{detalle_compra_sub_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="410" y="17" width="100" height="20" uuid="8380bbfe-1f4d-4474-bcae-43affc0d9ee7"/>
+				<text><![CDATA[TOTAL :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="572" y="17" width="100" height="20" uuid="0dff9d7c-f7dc-4399-a60a-c6be0bb3d550"/>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

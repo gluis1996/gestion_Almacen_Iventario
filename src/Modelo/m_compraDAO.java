@@ -96,19 +96,18 @@ public class m_compraDAO {
         return cod;
     }
 
-    public String idCompra() {
-        String idv = "";
+    public int idCompra() {
+        
         String consulta = ("select count(idCompra) as id from compra");
-
-        try {
-            PreparedStatement ps = cn.prepareStatement(consulta);
-            ResultSet rs = ps.executeQuery();
+        int cod = 0;
+         try {
+            ResultSet rs = Conexion.consulta(consulta);
             if (rs.next()) {
-                idv = rs.getString(1);
+                cod = rs.getInt("id") + 1;
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error sql" + e.getMessage());
         }
-        return idv;
+        return cod;
     }
 }

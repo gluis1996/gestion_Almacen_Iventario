@@ -21,13 +21,12 @@ public class v_principal extends javax.swing.JFrame {
 
         ADescritorio = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
-        tb_empleados = new javax.swing.JButton();
+        boton_empleado = new javax.swing.JButton();
         tb_productosMASvendidos = new javax.swing.JButton();
         tb_reportes = new javax.swing.JButton();
-        tb_nuevaVenta = new javax.swing.JButton();
+        boton_nueva_Venta = new javax.swing.JButton();
         tb_productoPiso = new javax.swing.JButton();
         tb_productoAlmacen = new javax.swing.JButton();
-        tb_entregas = new javax.swing.JButton();
         tb_ingresoAlmacen = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblcod = new javax.swing.JLabel();
@@ -49,7 +48,6 @@ public class v_principal extends javax.swing.JFrame {
         mp_categoria = new javax.swing.JMenuItem();
         m_almacen = new javax.swing.JMenu();
         ma_proveedor = new javax.swing.JMenuItem();
-        ma_Entregas = new javax.swing.JMenuItem();
         ma_ingresarAlmacen = new javax.swing.JMenuItem();
         m_repocicion = new javax.swing.JMenu();
         mr_ingresoapiso = new javax.swing.JMenuItem();
@@ -73,11 +71,11 @@ public class v_principal extends javax.swing.JFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        tb_empleados.setText("Empleados");
-        tb_empleados.setFocusable(false);
-        tb_empleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        tb_empleados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(tb_empleados);
+        boton_empleado.setText("Empleados");
+        boton_empleado.setFocusable(false);
+        boton_empleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        boton_empleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(boton_empleado);
 
         tb_productosMASvendidos.setText("Productos+Vendidos");
         tb_productosMASvendidos.setFocusable(false);
@@ -91,11 +89,11 @@ public class v_principal extends javax.swing.JFrame {
         tb_reportes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(tb_reportes);
 
-        tb_nuevaVenta.setText("Nueva Venta");
-        tb_nuevaVenta.setFocusable(false);
-        tb_nuevaVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        tb_nuevaVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(tb_nuevaVenta);
+        boton_nueva_Venta.setText("Nueva Venta");
+        boton_nueva_Venta.setFocusable(false);
+        boton_nueva_Venta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        boton_nueva_Venta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(boton_nueva_Venta);
 
         tb_productoPiso.setText("Producto Piso");
         tb_productoPiso.setFocusable(false);
@@ -108,12 +106,6 @@ public class v_principal extends javax.swing.JFrame {
         tb_productoAlmacen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tb_productoAlmacen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(tb_productoAlmacen);
-
-        tb_entregas.setText("Entregas");
-        tb_entregas.setFocusable(false);
-        tb_entregas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        tb_entregas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(tb_entregas);
 
         tb_ingresoAlmacen.setText("Ingresar Almacen");
         tb_ingresoAlmacen.setFocusable(false);
@@ -211,14 +203,6 @@ public class v_principal extends javax.swing.JFrame {
         ma_proveedor.setText("Proveedor");
         m_almacen.add(ma_proveedor);
 
-        ma_Entregas.setText("Entregas");
-        ma_Entregas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ma_EntregasActionPerformed(evt);
-            }
-        });
-        m_almacen.add(ma_Entregas);
-
         ma_ingresarAlmacen.setText("Ingresar Almacen");
         m_almacen.add(ma_ingresarAlmacen);
 
@@ -255,7 +239,7 @@ public class v_principal extends javax.swing.JFrame {
             .addComponent(ADescritorio)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -285,10 +269,6 @@ public class v_principal extends javax.swing.JFrame {
     private void m_sesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_sesionMouseClicked
     
     }//GEN-LAST:event_m_sesionMouseClicked
-
-    private void ma_EntregasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ma_EntregasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ma_EntregasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -327,6 +307,8 @@ public class v_principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane ADescritorio;
+    public javax.swing.JButton boton_empleado;
+    public javax.swing.JButton boton_nueva_Venta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -341,7 +323,6 @@ public class v_principal extends javax.swing.JFrame {
     public javax.swing.JMenu m_resumenVentas;
     public javax.swing.JMenu m_sesion;
     public javax.swing.JMenu m_ventas;
-    public javax.swing.JMenuItem ma_Entregas;
     public javax.swing.JMenuItem ma_ingresarAlmacen;
     public javax.swing.JMenuItem ma_proveedor;
     public javax.swing.JMenuItem me_nuevoEmpleado;
@@ -355,10 +336,7 @@ public class v_principal extends javax.swing.JFrame {
     public javax.swing.JMenuItem mv_clientes;
     public javax.swing.JMenuItem mv_detalleVetas;
     public javax.swing.JMenuItem mv_nuevaVenta;
-    public javax.swing.JButton tb_empleados;
-    public javax.swing.JButton tb_entregas;
     public javax.swing.JButton tb_ingresoAlmacen;
-    public javax.swing.JButton tb_nuevaVenta;
     public javax.swing.JButton tb_productoAlmacen;
     public javax.swing.JButton tb_productoPiso;
     public javax.swing.JButton tb_productosMASvendidos;

@@ -106,9 +106,8 @@ public class c_login implements ActionListener {
         vp.m_resumenVentas.setVisible(true);
         vp.m_almacen.setVisible(true);
         //botones
-        vp.tb_nuevaVenta.setVisible(true);
-        vp.tb_empleados.setVisible(true);
-        vp.tb_entregas.setVisible(true);
+        vp.boton_nueva_Venta.setVisible(true);
+        vp.boton_empleado.setVisible(true);
         vp.tb_ingresoAlmacen.setVisible(true);
         vp.tb_productoAlmacen.setVisible(true);
         vp.tb_productoPiso.setVisible(true);
@@ -126,9 +125,8 @@ public class c_login implements ActionListener {
         vp.m_resumenVentas.setVisible(false);
         vp.m_almacen.setVisible(false);
         //botones
-        vp.tb_nuevaVenta.setVisible(true);
-        vp.tb_empleados.setVisible(false);
-        vp.tb_entregas.setVisible(false);
+        vp.boton_nueva_Venta.setVisible(true);
+        vp.boton_empleado.setVisible(false);
         vp.tb_ingresoAlmacen.setVisible(false);
         vp.tb_productoAlmacen.setVisible(true);
         vp.tb_productoPiso.setVisible(true);
@@ -148,9 +146,8 @@ public class c_login implements ActionListener {
         vp.m_resumenVentas.setVisible(false);
         vp.m_almacen.setVisible(false);
         //botones
-        vp.tb_nuevaVenta.setVisible(false);
-        vp.tb_empleados.setVisible(false);
-        vp.tb_entregas.setVisible(false);
+        vp.boton_nueva_Venta.setVisible(false);
+        vp.boton_empleado.setVisible(false);
         vp.tb_ingresoAlmacen.setVisible(false);
         vp.tb_productoAlmacen.setVisible(true);
         vp.tb_productoPiso.setVisible(true);
@@ -169,9 +166,8 @@ public class c_login implements ActionListener {
         vp.m_resumenVentas.setVisible(false);
         vp.m_almacen.setVisible(true);
         //botones
-        vp.tb_nuevaVenta.setVisible(false);
-        vp.tb_empleados.setVisible(false);
-        vp.tb_entregas.setVisible(true);
+        vp.boton_nueva_Venta.setVisible(false);
+        vp.boton_empleado.setVisible(false);
         vp.tb_ingresoAlmacen.setVisible(true);
         vp.tb_productoAlmacen.setVisible(true);
         vp.tb_productoPiso.setVisible(true);

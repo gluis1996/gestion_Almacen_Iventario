@@ -35,6 +35,7 @@ public class vi_proveedores extends javax.swing.JInternalFrame {
         btnELIMINAR_PROVEEDOR = new javax.swing.JButton();
         boton_nuevo = new javax.swing.JButton();
         boton_cargar = new javax.swing.JButton();
+        boton_buscar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -96,6 +97,8 @@ public class vi_proveedores extends javax.swing.JInternalFrame {
 
         boton_cargar.setText("cargar");
 
+        boton_buscar.setText("buscar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,14 +110,16 @@ public class vi_proveedores extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(boton_cargar)
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(18, 18, 18)
                                     .addComponent(txtIDPROVEEDOR, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(boton_nuevo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(boton_buscar)
+                                    .addGap(18, 18, 18))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -168,7 +173,8 @@ public class vi_proveedores extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtIDPROVEEDOR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boton_nuevo))
+                            .addComponent(boton_nuevo)
+                            .addComponent(boton_buscar))
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -223,6 +229,7 @@ public class vi_proveedores extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable Tables;
+    public javax.swing.JButton boton_buscar;
     public javax.swing.JButton boton_cargar;
     public javax.swing.JButton boton_nuevo;
     public javax.swing.JButton btnELIMINAR_PROVEEDOR;

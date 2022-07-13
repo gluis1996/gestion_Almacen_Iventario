@@ -37,6 +37,7 @@ public class c_proveedor implements ActionListener {
         this.vista.btnELIMINAR_PROVEEDOR.addActionListener(this);
         this.vista.boton_nuevo.addActionListener(this);
         this.vista.boton_cargar.addActionListener(this);
+        this.vista.boton_buscar.addActionListener(this);
         //listarProveedor();
         //llenarProveedor();
     }
@@ -51,9 +52,12 @@ public class c_proveedor implements ActionListener {
             provDAO.eliminar(vista.txtIDPROVEEDOR.getText());
             provDAO.mostrar(vista.Tables);
         } else if (e.getSource() == vista.boton_nuevo) {
-            generarcodigo();
+            //generarcodigo();
         } else if (e.getSource() == vista.boton_cargar) {
             cargar();
+        } else if (e.getSource() == vista.boton_buscar) {
+           String c = provDAO.buscarProveedor(vista.txtIDPROVEEDOR.getText());
+           vista.txtRAZONSOCIAL.setText(c);
         }
     }
 

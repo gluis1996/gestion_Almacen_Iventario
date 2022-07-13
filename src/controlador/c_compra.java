@@ -1,12 +1,17 @@
 package controlador;
 
 import Vistas_InternasAdmin.vi_compra;
+import Vistas_InternasAdmin.vi_tablaCliente;
+import Vistas_InternasAdmin.vi_tabla_ProductoPiso;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.*;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Conexion;
@@ -15,12 +20,19 @@ import modelo.m_compraDAO;
 import modelo.m_detalleCompra;
 import modelo.m_detalleCompraDAO;
 import modelo.m_productoPisoDAO;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
+import org.apache.commons.collections.map.HashedMap;
+import vistav.v_principal;
 
 public class c_compra implements ActionListener {
 
+    private Connection conn = new Conexion().getConexion();
     private vi_compra vista;
     m_compraDAO md = new m_compraDAO();
     m_detalleCompraDAO fun = new m_detalleCompraDAO();
+
     DefaultTableModel modelo;
     Connection cn;
 
@@ -37,19 +49,24 @@ public class c_compra implements ActionListener {
         this.vista.boton_salir.addActionListener(this);
         this.vista.boton_guardar.addActionListener(this);
         this.vista.boton_nuevo.addActionListener(this);
-        
+        this.vista.boton_mostrar.addActionListener(this);
+        this.vista.boton_mostrarCliente.addActionListener(this);
+        this.vista.boton_imprimir.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object o = e.getSource();
-
+        
         if (o.equals(vista.boton_buscarProducto)) {
-            if (vista.txtnombreProducto.getText().isEmpty()) {
+            vi_tabla_ProductoPiso fun1 = new vi_tabla_ProductoPiso();
+            v_principal.ADescritorio.add(fun1);
+            fun1.setVisible(true);
+            /*if (vista.txtIdproducto.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Ingrese codigo del produco");
             } else {
                 buscarproducto();
-            }
+            }*/
         } else if (o.equals(vista.boton_añadir)) {
             botonAgregar();
         } else if (o.equals(vista.cbxTipoDePago)) {
@@ -57,11 +74,15 @@ public class c_compra implements ActionListener {
         } else if (o.equals(vista.boton_eliminar)) {
             removerProducto();
         } else if (o.equals(vista.boton_buscarCliente)) {
-            if (vista.txtCodigoCliente.getText().isEmpty()) {
+            vi_tablaCliente fun2 = new vi_tablaCliente();
+            v_principal.ADescritorio.add(fun2);
+            fun2.setVisible(true);
+
+            /*if (vista.txtCodigoCliente.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Ingrese haber ingresado DNI o CODIGO del Cliente");
             } else {
                 buscarCliente();
-            }
+            }*/
         } else if (o.equals(vista.boton_buscarVendedor)) {
             if (vista.txtcodigoVendedor.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Ingrese haber ingresado DNI o CODIGO del Vendedor");
@@ -74,8 +95,17 @@ public class c_compra implements ActionListener {
             GuardarVenta();
         } else if (o.equals(vista.boton_nuevo)) {
             GenerarCorrelativoCompra();
+        } else if (o.equals(vista.boton_mostrar)) {
+            vista.txtIdproducto.setText(c_tabla_ProductoPiso.c);
+            vista.txtNombrePro.setText(c_tabla_ProductoPiso.nombre);
+            vista.txtprecio.setText(String.valueOf(c_tabla_ProductoPiso.precio));
+            vista.txtStock.setText(String.valueOf(c_tabla_ProductoPiso.cantidad));
+        } else if (o.equals(vista.boton_mostrarCliente)) {
+            vista.txtCodigoCliente.setText(c_tablaCliente.codigoC);
+            vista.txtNombreCliente.setText(c_tablaCliente.nombre);
+        } else if (o.equals(vista.boton_imprimir)) {
+            paraElBotonImprimir();
         }
-
     }
 
     void mostrar() {
@@ -90,7 +120,7 @@ public class c_compra implements ActionListener {
 
     void GenerarCorrelativoCompra() {
         DecimalFormat df = new DecimalFormat("00000000");
-        vista.txtidCompra.setText(df.format(md.GenerarCompraventeBoleta()));
+        vista.txtidCompra.setText(df.format(md.idCompra()));
     }
 
     void GenerarCorrelativoBoleta() {
@@ -114,7 +144,6 @@ public class c_compra implements ActionListener {
         p.setComprovante(vista.cbxTipoDePago.getSelectedItem().toString());
         p.setNumero_comprovante(vista.txtCodigoVenta.getText());
         p.setCantidadTotal(Integer.parseInt(vista.txtcantidadTotalProductos.getText()));
-
         if (vista.txtidCompra.getText().isEmpty()
                 || vista.txtnombreVendedor.getText().isEmpty()
                 || vista.cbxTipoDePago.getSelectedItem().equals("seleccionar")
@@ -125,10 +154,10 @@ public class c_compra implements ActionListener {
 
             JOptionPane.showMessageDialog(null, "Verifique los datos");
         } else {
-            int i = JOptionPane.showConfirmDialog(null, "Desea Regsitrar","Informacion",JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE);
-            if(i == 0){
-            md.ingresarCompra(p);
-            }            
+            int i = JOptionPane.showConfirmDialog(null, "Desea Regsitrar", "Informacion", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (i == 0) {
+                md.ingresarCompra(p);
+            }
         }
     }
 
@@ -140,16 +169,16 @@ public class c_compra implements ActionListener {
         m_productoPisoDAO mpd = new m_productoPisoDAO();
         //int idc = Integer.parseInt(id);
 
-        for (int i = 0; i < vista.tabla.getRowCount(); i++) {           
+        for (int i = 0; i < vista.tabla.getRowCount(); i++) {
             mdc.setIdCompra(vista.txtidCompra.getText());
             mdc.setIdproducto(vista.tabla.getValueAt(i, 0).toString());
             mdc.setCantidad(Integer.parseInt(vista.tabla.getValueAt(i, 1).toString()));
             mdc.setPrecio_Unitario(Double.parseDouble(vista.tabla.getValueAt(i, 2).toString()));
-            mdc.setSub_total(Double.parseDouble(vista.tabla.getValueAt(i, 3).toString()));            
+            mdc.setSub_total(Double.parseDouble(vista.tabla.getValueAt(i, 3).toString()));
             mdcD.ingresarCompra(mdc);
             mpd.disminuir(vista.tabla.getValueAt(i, 0).toString(), Integer.parseInt(vista.tabla.getValueAt(i, 1).toString()));
         }
-        
+
     }
 
     public void AgregarProducto() {
@@ -162,7 +191,7 @@ public class c_compra implements ActionListener {
         subtotal = cantidad * precioP;
 
         ArrayList lista = new ArrayList();
-        lista.add(vista.txtnombreProducto.getText());
+        lista.add(vista.txtIdproducto.getText());
         lista.add(vista.txtCantidad.getText());
         lista.add(vista.txtprecio.getText());
         lista.add(subtotal);
@@ -204,7 +233,7 @@ public class c_compra implements ActionListener {
     }
 
     public void limpiarproducto() {
-        vista.txtnombreProducto.setText("");
+        vista.txtIdproducto.setText("");
         vista.txtNombrePro.setText("");
         vista.txtprecio.setText("");
         vista.txtStock.setText("");
@@ -214,7 +243,7 @@ public class c_compra implements ActionListener {
     public void limpiarFormulario() {
         vista.txtCodigoCliente.setText("");
         vista.txtNombreCliente.setText("");
-        vista.cbxTipoDePago.setSelectedIndex(0);
+        //vista.cbxTipoDePago.setSelectedIndex(0);
         vista.txtCodigoVenta.setText("");
         vista.txtSubtotal.setText("");
         vista.txtcantidadTotalProductos.setText("");
@@ -227,13 +256,12 @@ public class c_compra implements ActionListener {
     public void limpiarTabla() {
         try {
             for (int i = 0; i < vista.tabla.getRowCount(); i++) {
-            modelo.removeRow(i);
-            i-=1;
-        }
+                modelo.removeRow(i);
+                i -= 1;
+            }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error Limpiar tabla "+e);
+            JOptionPane.showMessageDialog(null, "Error Limpiar tabla " + e);
         }
-
     }
 
     public void removerProducto() {
@@ -249,7 +277,7 @@ public class c_compra implements ActionListener {
     }
 
     public void buscarproducto() {
-        String consulta = "call sp_bucarProducto ('" + vista.txtnombreProducto.getText() + "')";
+        String consulta = "call sp_bucarProducto ('" + vista.txtIdproducto.getText() + "')";
         try {
             CallableStatement ps = Conexion.getConexion().prepareCall(consulta);
             ResultSet rs = ps.executeQuery();
@@ -268,7 +296,7 @@ public class c_compra implements ActionListener {
     }
 
     public void botonAgregar() {
-        if (vista.txtnombreProducto.getText().isEmpty()
+        if (vista.txtIdproducto.getText().isEmpty()
                 || vista.txtCantidad.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "verfique que los campos de producto y cantidad esten llenas");
 
@@ -345,12 +373,55 @@ public class c_compra implements ActionListener {
                 || vista.txtSubtotal.getText().isEmpty()
                 || vista.cbxTipoDePago.getSelectedItem().equals("Selecionar")
                 || vista.txtCodigoVenta.getText().isEmpty()
-                || vista.txtcantidadTotalProductos.getText().isEmpty()){
+                || vista.txtcantidadTotalProductos.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Verifique los datos esten todos llenos");
-        }else{
+        } else {
             GuardarCompra();
             GuardarDetalleCompra();
             limpiarFormulario();
         }
+    }
+
+    void paraElBotonImprimir() {
+
+        String idc = vista.txtidCompra.getText();
+        String tipoD = vista.cbxTipoDePago.getSelectedItem().toString();
+        if (tipoD.equalsIgnoreCase("boleta")) {
+            Map p = new HashMap();
+            p.put("idCompra ", idc);
+
+            JasperReport reporte;
+            JasperPrint print;
+
+            try {
+                reporte = JasperCompileManager.compileReport(new File("").getAbsolutePath() + "/src/reporte/reportecompra2.jasper");
+                print = JasperFillManager.fillReport(reporte, p, this.conn);
+                JasperViewer vista = new JasperViewer(print, false);
+                vista.setTitle("comprovante Venta");
+                vista.setVisible(true);
+            } catch (JRException e) {
+                JOptionPane.showMessageDialog(null, "Error en mostrar comprobante " + e);
+            }
+        } else if (tipoD.equalsIgnoreCase("factura")) {
+            Map p = new HashMap();
+            p.put("idCompra ", idc);
+
+            JasperReport reporte;
+            JasperPrint print;
+
+            try {
+                reporte = JasperCompileManager.compileReport(new File("").getAbsolutePath() + "/src/reporte/reportecompra2.jasper");
+                print = JasperFillManager.fillReport(reporte, p, this.conn);
+                JasperViewer vista = new JasperViewer(print, false);
+                vista.setTitle("comprovante Venta");
+                vista.setVisible(true);
+            } catch (JRException e) {
+                JOptionPane.showMessageDialog(null, "Error en mostrar comprobante " + e);
+            }
+        
+        }else {
+        JOptionPane.showMessageDialog(null, "selecione una venta");
+        }
+
     }
 }

@@ -17,10 +17,12 @@ public class c_productoPiso implements ActionListener {
     
     private m_productoPisoDAO mp = new m_productoPisoDAO();
     private m_detalleReponedorDAO mdrd = new m_detalleReponedorDAO();
+    private m_productoAlmacenDAO fun = new m_productoAlmacenDAO();
     private String codigocategoria;
     private DefaultTableModel modelo;
     private m_loginDAO l = new m_loginDAO();
     private m_login ml = new m_login();
+    static int acumulador;
     
     public c_productoPiso(vi_productoPiso vista) {
         this.vista = vista;
@@ -77,7 +79,7 @@ public class c_productoPiso implements ActionListener {
         p.setCategoria(Integer.parseInt(codigocategoria));
 
         try {
-            if (Integer.parseInt(vista.txtstockActual.getText()) >= 1) {
+            if (Integer.parseInt(vista.txtingreso.getText()) >= 1) {
                 p.setCantidad(Integer.parseInt(vista.txtingreso.getText()));
                 vista.txtstockActual.requestFocus();
             }
@@ -107,6 +109,7 @@ public class c_productoPiso implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Ya exite este producto ", "INFO", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     mp.ingresar(p);
+                    fun.disminuir(vista.txtcodigo.getText(), Integer.parseInt(vista.txtingreso.getText()));
                     limpiar();
                 }
             } catch (Exception e) {
@@ -127,15 +130,16 @@ public class c_productoPiso implements ActionListener {
     public void actualizarProducto() {
         m_productoPiso p = new m_productoPiso();
         m_detalleReponedor d = new m_detalleReponedor();
-        int contador = 0;
+        int contador = 0;        
         int c = Integer.parseInt(vista.txtingreso.getText());
+        acumulador=acumulador+c;
         d.setIdEmpleado(vista.txtcodEmpleado.getText());
         d.setIdProducto(vista.txtcodigo.getText());
         d.setDetalle(vista.txtobs.getText());
         p.setCodigo(vista.txtcodigo.getText());
         try {
             if (Integer.parseInt(vista.txtstockActual.getText()) >= 0) {
-                p.setCantidad(Integer.parseInt(vista.txtnuevoStock.getText()));
+                p.setCantidad(acumulador);
                 d.setCantidadRegistrada(c);
             }
         } catch (NumberFormatException e) {
@@ -144,8 +148,9 @@ public class c_productoPiso implements ActionListener {
         p.setPrecioUnitario(Double.parseDouble(vista.txtprecioUni.getText()));
         p.setLimiteStock(Integer.parseInt(vista.txtLimiteStock.getText()));
         int resul = JOptionPane.showConfirmDialog(null, "Desea Actualziar", "Atencion", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if (resul == 0) {
+        if (resul == 0) {            
             mp.actualizar(p);
+            fun.disminuir(vista.txtcodigo.getText(), c);
             mdrd.ingresaDetalleReponedor(d);
             limpiar();
         }
@@ -160,16 +165,17 @@ public class c_productoPiso implements ActionListener {
             String codigo = (String) vista.tabla.getValueAt(fila, 0);
             String descripcion = (String) vista.tabla.getValueAt(fila, 1);
             String categoria = (String) vista.tabla.getValueAt(fila, 2);
-            int stock = (int) vista.tabla.getValueAt(fila, 3);
+            acumulador = (int) vista.tabla.getValueAt(fila, 3);
             double precio = (double) vista.tabla.getValueAt(fila, 4);
             int limi = (int) vista.tabla.getValueAt(fila, 5);
 
             vista.txtcodigo.setText(codigo);
             vista.txtdescripcion.setText(descripcion);
             vista.cbxCategoria.setSelectedIndex(0);
-            vista.txtstockActual.setText(String.valueOf(stock));
+            vista.txtstockActual.setText(String.valueOf(acumulador));
             vista.txtprecioUni.setText(String.valueOf(precio));
             vista.txtLimiteStock.setText(String.valueOf(limi));
+            System.out.println(acumulador);
         }
     }
 

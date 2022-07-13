@@ -32,6 +32,7 @@ c_tabla_ProductoPiso c;
         txtbuscar = new javax.swing.JTextField();
         boton_buscar = new javax.swing.JButton();
         boton_todo = new javax.swing.JButton();
+        boton_cargar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
 
@@ -46,6 +47,8 @@ c_tabla_ProductoPiso c;
 
         boton_todo.setText("Todo");
 
+        boton_cargar.setText("cargar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -59,6 +62,8 @@ c_tabla_ProductoPiso c;
                 .addComponent(boton_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(boton_todo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boton_cargar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -69,7 +74,8 @@ c_tabla_ProductoPiso c;
                     .addComponent(jLabel1)
                     .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boton_buscar)
-                    .addComponent(boton_todo))
+                    .addComponent(boton_todo)
+                    .addComponent(boton_cargar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -113,6 +119,7 @@ c_tabla_ProductoPiso c;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton boton_buscar;
+    public javax.swing.JButton boton_cargar;
     public javax.swing.JButton boton_todo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

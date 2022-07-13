@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 public class c_tablaCliente implements ActionListener {
 
     private vi_tablaCliente vista;
+    static String codigoC;
+    static String nombre;
 
     public c_tablaCliente(vi_tablaCliente vista) {
         this.vista = vista;
@@ -27,6 +29,7 @@ public class c_tablaCliente implements ActionListener {
         } else if (e.getSource() == vista.boton_cargar) {
             //JOptionPane.showMessageDialog(null, "ld");
             cargarCliente();
+            vista.dispose();
         }
     }
 
@@ -96,8 +99,8 @@ public class c_tablaCliente implements ActionListener {
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "sin datos");
         } else {
-            String codigo = (String) vista.tabla.getValueAt(fila, 0);
-            String tdoc = (String) vista.tabla.getValueAt(fila, 1);
+            codigoC = (String) vista.tabla.getValueAt(fila, 0);
+            nombre = (String) vista.tabla.getValueAt(fila, 2);
             String doc = (String) vista.tabla.getValueAt(fila, 2);
             String nombre = (String) vista.tabla.getValueAt(fila, 3);
             String apellido = (String) vista.tabla.getValueAt(fila, 4);
@@ -108,7 +111,7 @@ public class c_tablaCliente implements ActionListener {
             String estadoC = (String) vista.tabla.getValueAt(fila, 9);
             String genero = (String) vista.tabla.getValueAt(fila, 10);
 
-            c.txtCodigo.setText(codigo);
+            c.txtCodigo.setText(codigoC);
             c.txtDocumento.setText(doc);
             c.txtNombre.setText(nombre);
             c.txtApellido.setText(apellido);
@@ -116,6 +119,7 @@ public class c_tablaCliente implements ActionListener {
             c.txtTelefono.setText(telefono);
             c.txtEmail.setText(email);
             c.txtFechaNacimiento.setText(fnacimiento);
+            
         }
 
     }
