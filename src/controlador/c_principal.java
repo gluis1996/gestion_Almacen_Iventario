@@ -108,9 +108,6 @@ public class c_principal implements ActionListener{
         }else if (ev.equals(vista.tb_productoPiso)){
             v_principal.ADescritorio.add(vtp);              
             vtp.setVisible(true);
-        }else if (ev.equals(vista.tb_productoAlmacen)){
-            v_principal.ADescritorio.add(vta);            
-            vta.setVisible(true);
         }
         
         //area almacen tb_ingresoAlmacen

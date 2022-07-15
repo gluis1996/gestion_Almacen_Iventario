@@ -58,12 +58,14 @@ public class c_login implements ActionListener {
                     mostrarAdministrador();
                     vp.lblcod.setText(id);
                     vp.lbluser.setText(user);
+                    limpiar();
                 } else if (rol.equalsIgnoreCase("Vendedor")) {
                     vista.dispose();
                     vp.setVisible(true);
                     mostrarintenvendedor();
                     vp.lblcod.setText(id);
                     vp.lbluser.setText(user);
+                    limpiar();
                     JOptionPane.showMessageDialog(null, "Bienvenido al Vendedor", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 } else if (rol.equalsIgnoreCase("Reponedor")) {
                     vista.dispose();
@@ -71,6 +73,7 @@ public class c_login implements ActionListener {
                     mostrarintenReponedor();
                     vp.lblcod.setText(id);
                     vp.lbluser.setText(user);
+                    limpiar();
                     JOptionPane.showMessageDialog(null, "Bienvenido al Reponedor", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 } else if (rol.equalsIgnoreCase("Almacenero")) {
                     vista.dispose();
@@ -78,6 +81,7 @@ public class c_login implements ActionListener {
                     mostrarintenAlmacenero();
                     vp.lblcod.setText(id);
                     vp.lbluser.setText(user);
+                    limpiar();
                     JOptionPane.showMessageDialog(null, "Bienvenido al Reponedor", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 }
             } else {
@@ -109,10 +113,9 @@ public class c_login implements ActionListener {
         vp.boton_nueva_Venta.setVisible(true);
         vp.boton_empleado.setVisible(true);
         vp.tb_ingresoAlmacen.setVisible(true);
-        vp.tb_productoAlmacen.setVisible(true);
+        
         vp.tb_productoPiso.setVisible(true);
-        vp.tb_productosMASvendidos.setVisible(true);
-        vp.tb_reportes.setVisible(true);    
+       
     }
     
     
@@ -128,10 +131,9 @@ public class c_login implements ActionListener {
         vp.boton_nueva_Venta.setVisible(true);
         vp.boton_empleado.setVisible(false);
         vp.tb_ingresoAlmacen.setVisible(false);
-        vp.tb_productoAlmacen.setVisible(true);
+        
         vp.tb_productoPiso.setVisible(true);
-        vp.tb_productosMASvendidos.setVisible(false);
-        vp.tb_reportes.setVisible(false);
+       
         vp.lblcod.setVisible(true);
         
     }
@@ -149,10 +151,9 @@ public class c_login implements ActionListener {
         vp.boton_nueva_Venta.setVisible(false);
         vp.boton_empleado.setVisible(false);
         vp.tb_ingresoAlmacen.setVisible(false);
-        vp.tb_productoAlmacen.setVisible(true);
+        
         vp.tb_productoPiso.setVisible(true);
-        vp.tb_productosMASvendidos.setVisible(false);
-        vp.tb_reportes.setVisible(false);
+        
         vp.lblcod.setVisible(true);
     }
     
@@ -169,12 +170,14 @@ public class c_login implements ActionListener {
         vp.boton_nueva_Venta.setVisible(false);
         vp.boton_empleado.setVisible(false);
         vp.tb_ingresoAlmacen.setVisible(true);
-        vp.tb_productoAlmacen.setVisible(true);
+        
         vp.tb_productoPiso.setVisible(true);
-        vp.tb_productosMASvendidos.setVisible(false);
-        vp.tb_reportes.setVisible(false);
+        
         vp.lblcod.setVisible(true);
     }
     
-        
+        void limpiar (){
+        vista.txtpass.setText("");
+        vista.txtusuario.setText("");
+        }
 }
