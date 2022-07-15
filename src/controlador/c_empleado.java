@@ -24,7 +24,7 @@ public class c_empleado implements ActionListener {
 
     public c_empleado(vi_empleado vista) {
         this.vista = vista;
-        
+
         agruparBotones();
         edao.cargarRolEmpleado(vista.CBX_roles);
         this.vista.boton_Nuevo.addActionListener(this);
@@ -47,7 +47,7 @@ public class c_empleado implements ActionListener {
         Object ev = e.getSource();
         if (ev.equals(vista.boton_Nuevo)) {
             generarcodigo();
-            
+
         } else if (ev.equals(vista.BTN_MostrarEmpleado)) {
             edao = new m_empleadoDAO();
             edao.llenarEnTablaEmpleado(vista.tabla1);
@@ -150,7 +150,7 @@ public class c_empleado implements ActionListener {
             e.setNumerodocumento(vista.txtNdocumento.getText());
             e.setNombre(vista.txtNombre.getText());
             e.setApellido(vista.txtApellido.getText());
-            e.setNacionalidad(vista.txtNacionalidad.getText());            
+            e.setNacionalidad(vista.txtNacionalidad.getText());
             try {
                 e.setEdad(Integer.parseInt(vista.txtEdad.getText()));
             } catch (NumberFormatException e) {
@@ -166,7 +166,7 @@ public class c_empleado implements ActionListener {
                 e.setEstado("I");
             }
 
-            if ( vista.txtNdocumento.getText().isEmpty()
+            if (vista.txtNdocumento.getText().isEmpty()
                     || vista.txtNombre.getText().isEmpty()
                     || vista.txtApellido.getText().isEmpty()
                     || vista.txtNacionalidad.getText().isEmpty()
@@ -201,7 +201,7 @@ public class c_empleado implements ActionListener {
     }
 
     public void cargaratabla() {
-        
+
         int fila = vista.tabla1.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "sin datos");
@@ -232,8 +232,7 @@ public class c_empleado implements ActionListener {
                     vista.rb_Activo.setSelected(false);
                     break;
             }
-            
-            
+
         }
 
     }
@@ -267,10 +266,9 @@ public class c_empleado implements ActionListener {
         codigoRoles = split[0];
         System.out.println(codigoRoles);
     }
-    
-    
-    public void inabilitar(){
-    vista.cbxTdocument.setEnabled(false);
+
+    public void inabilitar() {
+        vista.cbxTdocument.setEnabled(false);
         vista.txtNdocumento.setEnabled(false);
         vista.txtNombre.setEnabled(false);
         vista.txtApellido.setEnabled(false);
@@ -278,11 +276,11 @@ public class c_empleado implements ActionListener {
         vista.txtEdad.setEnabled(false);
         vista.cbxGenero.setEnabled(false);
         vista.txtDistrito.setEnabled(false);
-        vista.CBX_roles.setEnabled(false);    
+        vista.CBX_roles.setEnabled(false);
     }
-    
-        public void habilitar(){
-    vista.cbxTdocument.setEnabled(true);
+
+    public void habilitar() {
+        vista.cbxTdocument.setEnabled(true);
         vista.txtNdocumento.setEnabled(true);
         vista.txtNombre.setEnabled(true);
         vista.txtApellido.setEnabled(true);
@@ -290,9 +288,7 @@ public class c_empleado implements ActionListener {
         vista.txtEdad.setEnabled(true);
         vista.cbxGenero.setEnabled(true);
         vista.txtDistrito.setEnabled(true);
-        vista.CBX_roles.setEnabled(true);    
+        vista.CBX_roles.setEnabled(true);
     }
-    
-    
-    
+
 }

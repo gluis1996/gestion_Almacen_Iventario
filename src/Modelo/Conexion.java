@@ -24,25 +24,7 @@ public class Conexion {
         return null;
     }
     
-   /* public static Connection getConexion() {
-        status = false;
-        
-        String url = "jdbc:sqlserver://192.168.100.45:1433;databaseName=Licoreria";
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "error al conectar " + e);
-        }
 
-        try {
-            con = DriverManager.getConnection(url, "sa", "gonzalo1996");
-            status = true;
-            //JOptionPane.showMessageDialog(null, "conexion Exitosa");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error " + e);
-        }
-        return con;
-    }*/
    
     
    public static ResultSet consulta(String consulta) {
