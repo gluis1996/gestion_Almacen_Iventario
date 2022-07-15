@@ -123,7 +123,7 @@ public class vi_productoPiso extends javax.swing.JInternalFrame {
         getContentPane().add(txtobs, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 220, -1));
         getContentPane().add(txtcodEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 10, 80, -1));
 
-        txtstockActual.setText("jLabel9");
+        txtstockActual.setText(".....");
         getContentPane().add(txtstockActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, -1, -1));
 
         jLabel9.setText("Ingreso :");
@@ -133,7 +133,7 @@ public class vi_productoPiso extends javax.swing.JInternalFrame {
         jLabel10.setText("Nº");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, -1));
 
-        txtnuevoStock.setText("jLabel11");
+        txtnuevoStock.setText(".....");
         getContentPane().add(txtnuevoStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
 
         boton_buscar.setText("Buscar");
