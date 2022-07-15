@@ -107,7 +107,7 @@ public class m_proveedorDAO {
         return cod;
     }
     
-    public String buscarProveedor(String cod){
+        public String buscarProveedor(String cod){
         String consulta="select RUC,Razon_Social from proveedor where ruc =('"+cod+"')";
         rs = Conexion.consulta(consulta);
         try {

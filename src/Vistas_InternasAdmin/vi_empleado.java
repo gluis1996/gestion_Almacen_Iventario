@@ -59,6 +59,7 @@ public class vi_empleado extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Registro Empleado");
 
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

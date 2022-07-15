@@ -38,7 +38,7 @@ public class c_ingresoAlmacen implements ActionListener {
 
     public c_ingresoAlmacen(vi_ingresoAlmacen vista) {
         this.vista = vista;
-        activosincios();
+       
         mostrar();
         mpad.cargarcategoria(vista.cbxCategoria);
         this.vista.boton_buscar_proveedor.addActionListener(this);
@@ -60,7 +60,7 @@ public class c_ingresoAlmacen implements ActionListener {
         if (o.equals(vista.boton_buscar_proveedor)) {
             String c = mp.buscarProveedor(vista.txRUC.getText());
             vista.txtdescripcion.setText(c);
-            A_botonB_proveedor();
+          
         } else if (o.equals(vista.boton_cargarCodigo_producto)) {
             generarcodigo();
         } else if (o.equals(vista.boton_registrar)) {
@@ -73,8 +73,8 @@ public class c_ingresoAlmacen implements ActionListener {
                     || vista.txtPrecioVenta.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "verifique que todo los campos esten llenos");
             } else {
-                ingresonuevo();
-                DetalleigresoAlmacen();
+               registrar();
+                DetalleigresoAlmacen0();
             }
         } else if (o.equals(vista.cbxCategoria)) {
             categoriasEnCBXcat();
@@ -88,10 +88,7 @@ public class c_ingresoAlmacen implements ActionListener {
                 JOptionPane.showMessageDialog(null, "verifique que tengas algun numero ingresado");
             } else {
                 mpad.MPAmenores(vista.tabla, Integer.parseInt(vista.txtcantidadIngresada.getText()));
-                A_botonB_filtrar();
-                if (vista.tabla.getRowCount()==-1){
-                    A_botonB_filtrar();
-                }
+                
             }
         } else if (o.equals(vista.boton_cargar)) {
             if(vista.tabla.getRowCount()==-1){
@@ -257,25 +254,13 @@ public class c_ingresoAlmacen implements ActionListener {
 
     }
 
-    public void ingresonuevo() {
-        m_productoAlmacen fun = new m_productoAlmacen();
-        m_productoAlmacenDAO fun1 = new m_productoAlmacenDAO();
-        for (int i = 0; i < vista.tabla.getRowCount(); i++) {
-            fun.setCodigo(vista.tabla.getValueAt(i, 1).toString());
-            fun.setDescripcion(vista.tabla.getValueAt(i, 2).toString());
-            fun.setCategoria(Integer.parseInt(vista.tabla.getValueAt(i, 3).toString()));
-            fun.setCantidad(Integer.parseInt(vista.tabla.getValueAt(i, 5).toString()));
-            fun.setPrecio_venta(Double.parseDouble(vista.tabla.getValueAt(i, 7).toString()));
-            fun1.IngresarproductoAlmacen(fun);
-        }
-    }
+
 
     public void CargarBM() {
         int fila = vista.tabla.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "Sin datos TA");
-            A_botonB_filtrar();
-            A_tabla_vacia();
+            
             
         } else {
             String a = (String) vista.tabla.getValueAt(fila, 0);
@@ -297,7 +282,7 @@ public class c_ingresoAlmacen implements ActionListener {
             vista.txtPrecioVenta.setText(String.valueOf(i));
             acumulador = f;
             System.out.println(acumulador);
-            A_botonB_filtrar1();
+            
         }
     }
 
@@ -367,58 +352,6 @@ public class c_ingresoAlmacen implements ActionListener {
         vista.txtPrecioVenta.setText("");
     }
 
-    void activosincios() {
-        vista.boton_buscar_proveedor.setEnabled(true);
-        vista.boton_cargarCodigo_producto.setEnabled(true);
-        vista.boton_registrar.setEnabled(false);
-        vista.boton_añadir.setEnabled(false);
-        vista.boton_filtrar.setEnabled(true);
-        vista.boton_mostrar_todo.setEnabled(true);
-        vista.boton_actualisar.setEnabled(false);
-        vista.boton_cargar.setEnabled(false);
-    }
-
-    void A_botonB_proveedor() {
-        vista.boton_buscar_proveedor.setEnabled(true);
-        vista.boton_cargarCodigo_producto.setEnabled(true);
-        vista.boton_registrar.setEnabled(false);
-        vista.boton_añadir.setEnabled(true);
-        vista.boton_filtrar.setEnabled(true);
-        vista.boton_mostrar_todo.setEnabled(false);
-        vista.boton_actualisar.setEnabled(false);
-        vista.boton_cargar.setEnabled(false);
-    }
-    
-    void A_botonB_filtrar() {
-        vista.boton_buscar_proveedor.setEnabled(false);
-        vista.boton_cargarCodigo_producto.setEnabled(false);
-        vista.boton_registrar.setEnabled(false);
-        vista.boton_añadir.setEnabled(false);
-        vista.boton_filtrar.setEnabled(true);
-        vista.boton_mostrar_todo.setEnabled(false);
-        vista.boton_actualisar.setEnabled(true);
-        vista.boton_cargar.setEnabled(true);
-    }
-    void A_botonB_filtrar1() {
-        vista.boton_buscar_proveedor.setEnabled(false);
-        vista.boton_cargarCodigo_producto.setEnabled(false);
-        vista.boton_registrar.setEnabled(false);
-        vista.boton_añadir.setEnabled(false);
-        vista.boton_filtrar.setEnabled(false);
-        vista.boton_mostrar_todo.setEnabled(false);
-        vista.boton_actualisar.setEnabled(true);
-        vista.boton_cargar.setEnabled(true);
-    }
-    void A_tabla_vacia() {
-        vista.boton_buscar_proveedor.setEnabled(true);
-        vista.boton_cargarCodigo_producto.setEnabled(true);
-        vista.boton_registrar.setEnabled(false);
-        vista.boton_añadir.setEnabled(true);
-        vista.boton_filtrar.setEnabled(true);
-        vista.boton_mostrar_todo.setEnabled(true);
-        vista.boton_actualisar.setEnabled(false);
-        vista.boton_cargar.setEnabled(false);
-    }
     void paraElBotonAñadir(){
     if (vista.txtIdproducto.getText().isEmpty()
                     || vista.txtnombrePro.getText().isEmpty()

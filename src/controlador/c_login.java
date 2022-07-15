@@ -122,7 +122,7 @@ public class c_login implements ActionListener {
         vp.m_sesion.setVisible(true);
         vp.m_empleados.setVisible(false);
         vp.m_repocicion.setVisible(false);
-        vp.m_resumenVentas.setVisible(false);
+        vp.m_resumenVentas.setVisible(true);
         vp.m_almacen.setVisible(false);
         //botones
         vp.boton_nueva_Venta.setVisible(true);

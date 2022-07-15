@@ -40,6 +40,7 @@ c_tabla_ProductoPiso c;
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Lista De Producto Piso");
 
         jLabel1.setText("Buscar");
 

@@ -28,6 +28,7 @@ public class vi_categoria extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Categorias");
 
         jLabel1.setText("nombre:");
 

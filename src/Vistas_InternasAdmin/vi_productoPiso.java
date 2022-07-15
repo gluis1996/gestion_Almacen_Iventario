@@ -35,7 +35,6 @@ public class vi_productoPiso extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         boton_guardar = new javax.swing.JButton();
-        boton_nuevo = new javax.swing.JButton();
         boton_actualizar = new javax.swing.JButton();
         boton_cargar = new javax.swing.JButton();
         boton_mostrar = new javax.swing.JButton();
@@ -50,6 +49,7 @@ public class vi_productoPiso extends javax.swing.JInternalFrame {
         txtingreso = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtnuevoStock = new javax.swing.JLabel();
+        boton_buscar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -100,14 +100,11 @@ public class vi_productoPiso extends javax.swing.JInternalFrame {
         boton_guardar.setText("Guardar");
         getContentPane().add(boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 100, -1));
 
-        boton_nuevo.setText("nuevo");
-        getContentPane().add(boton_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
-
         boton_actualizar.setText("Actualizar");
         getContentPane().add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 100, -1));
 
         boton_cargar.setText("Cargar");
-        getContentPane().add(boton_cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 100, -1));
+        getContentPane().add(boton_cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 100, -1));
 
         boton_mostrar.setText("M. Tablas");
         getContentPane().add(boton_mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 100, -1));
@@ -139,16 +136,19 @@ public class vi_productoPiso extends javax.swing.JInternalFrame {
         txtnuevoStock.setText("jLabel11");
         getContentPane().add(txtnuevoStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
 
+        boton_buscar.setText("Buscar");
+        getContentPane().add(boton_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton boton_actualizar;
+    public javax.swing.JButton boton_buscar;
     public javax.swing.JButton boton_cargar;
     public javax.swing.JButton boton_guardar;
     public javax.swing.JButton boton_mostrar;
-    public javax.swing.JButton boton_nuevo;
     public javax.swing.JButton boton_salir;
     public javax.swing.JButton boton_suma;
     public javax.swing.JComboBox<String> cbxCategoria;

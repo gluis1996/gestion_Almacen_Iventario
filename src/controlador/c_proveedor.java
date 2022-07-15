@@ -31,33 +31,32 @@ public class c_proveedor implements ActionListener {
 
     public c_proveedor(vi_proveedores vista) {
         this.vista = vista;
-        //provDAO.mostrar(vista.Tables);
+        provDAO.mostrar(vista.Tables);
         this.vista.btnREGISTRAR_PROVEEDOR.addActionListener(this);
         this.vista.btnMODIFICAR_PROVEEDOR.addActionListener(this);
         this.vista.btnELIMINAR_PROVEEDOR.addActionListener(this);
-        this.vista.boton_nuevo.addActionListener(this);
         this.vista.boton_cargar.addActionListener(this);
         this.vista.boton_buscar.addActionListener(this);
-        //listarProveedor();
-        //llenarProveedor();
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vista.btnREGISTRAR_PROVEEDOR) {
             ingresarproveedor();
+            limpiar();
         } else if (e.getSource() == vista.btnMODIFICAR_PROVEEDOR) {
             actualizar();
+            limpiar();
         } else if (e.getSource() == vista.btnELIMINAR_PROVEEDOR) {
-            provDAO.eliminar(vista.txtIDPROVEEDOR.getText());
+            provDAO.eliminar(vista.txtIDPROVEEDOR.getText());            
             provDAO.mostrar(vista.Tables);
-        } else if (e.getSource() == vista.boton_nuevo) {
-            //generarcodigo();
+            limpiar();
         } else if (e.getSource() == vista.boton_cargar) {
             cargar();
         } else if (e.getSource() == vista.boton_buscar) {
-           String c = provDAO.buscarProveedor(vista.txtIDPROVEEDOR.getText());
-           vista.txtRAZONSOCIAL.setText(c);
+            String c = provDAO.buscarProveedor(vista.txtIDPROVEEDOR.getText());
+            vista.txtRAZONSOCIAL.setText(c);
         }
     }
 
@@ -124,19 +123,19 @@ public class c_proveedor implements ActionListener {
                 || vista.txtCONTACTOCOMERCIAL.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios...");
         } else {
-            int r = JOptionPane.showConfirmDialog(null, "Desea actualizar","atencion",JOptionPane.OK_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE);
-            if (r == 0){
+            int r = JOptionPane.showConfirmDialog(null, "Desea actualizar", "atencion", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (r == 0) {
                 provDAO.modificar(prov);
                 provDAO.mostrar(vista.Tables);
                 JOptionPane.showMessageDialog(null, "Actualziado proveedor");
             }
-            
+
         }
 
     }
-    
-    public void cargar(){
-    int fila = vista.Tables.getSelectedRow();
+
+    public void cargar() {
+        int fila = vista.Tables.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "sin datos");
         } else {
@@ -154,8 +153,16 @@ public class c_proveedor implements ActionListener {
             vista.txtCONTACTO.setText(Contacto);
             vista.txtCONTACTOCOMERCIAL.setText(Contacto_comercial);
         }
-    
+
+    }
+
+    void limpiar() {
+        vista.txtIDPROVEEDOR.setText("");
+        vista.txtRAZONSOCIAL.setText("");
+        vista.txtDIRECCION.setText("");
+        vista.txtCORREO.setText("");
+        vista.txtCONTACTO.setText("");
+        vista.txtCONTACTOCOMERCIAL.setText("");
     }
 
 }
-

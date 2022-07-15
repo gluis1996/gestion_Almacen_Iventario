@@ -19,9 +19,7 @@ public class m_productoPisoDAO {
     Connection cn;
     ResultSet rs = null;
 
-    /*public m_productoPisoDAO() {
-        con = new Conexion();
-    }*/
+    
     public void ingresar(m_productoPiso mps) {
         String consulta = "{call sp_insertar_productoPiso(?,?,?,?,?,?)}";
         try {

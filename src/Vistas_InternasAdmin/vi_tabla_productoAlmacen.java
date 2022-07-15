@@ -27,11 +27,13 @@ public class vi_tabla_productoAlmacen extends javax.swing.JInternalFrame {
         tabla = new javax.swing.JTable();
         boton_buscar = new javax.swing.JButton();
         txtBuscarCodig = new javax.swing.JTextField();
+        boton_todo = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Pruducto en Almacen");
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -46,7 +48,9 @@ public class vi_tabla_productoAlmacen extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
-        boton_buscar.setText("jButton1");
+        boton_buscar.setText("buscar producto");
+
+        boton_todo.setText("Todo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,6 +65,8 @@ public class vi_tabla_productoAlmacen extends javax.swing.JInternalFrame {
                 .addComponent(txtBuscarCodig, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(boton_buscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boton_todo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -69,7 +75,8 @@ public class vi_tabla_productoAlmacen extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_buscar)
-                    .addComponent(txtBuscarCodig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBuscarCodig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boton_todo))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -81,6 +88,7 @@ public class vi_tabla_productoAlmacen extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton boton_buscar;
+    public javax.swing.JButton boton_todo;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tabla;
     public javax.swing.JTextField txtBuscarCodig;

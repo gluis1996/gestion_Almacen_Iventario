@@ -24,6 +24,7 @@ public class c_empleado implements ActionListener {
 
     public c_empleado(vi_empleado vista) {
         this.vista = vista;
+        
         agruparBotones();
         edao.cargarRolEmpleado(vista.CBX_roles);
         this.vista.boton_Nuevo.addActionListener(this);
@@ -46,6 +47,7 @@ public class c_empleado implements ActionListener {
         Object ev = e.getSource();
         if (ev.equals(vista.boton_Nuevo)) {
             generarcodigo();
+            
         } else if (ev.equals(vista.BTN_MostrarEmpleado)) {
             edao = new m_empleadoDAO();
             edao.llenarEnTablaEmpleado(vista.tabla1);
@@ -265,4 +267,32 @@ public class c_empleado implements ActionListener {
         codigoRoles = split[0];
         System.out.println(codigoRoles);
     }
+    
+    
+    public void inabilitar(){
+    vista.cbxTdocument.setEnabled(false);
+        vista.txtNdocumento.setEnabled(false);
+        vista.txtNombre.setEnabled(false);
+        vista.txtApellido.setEnabled(false);
+        vista.txtNacionalidad.setEnabled(false);
+        vista.txtEdad.setEnabled(false);
+        vista.cbxGenero.setEnabled(false);
+        vista.txtDistrito.setEnabled(false);
+        vista.CBX_roles.setEnabled(false);    
+    }
+    
+        public void habilitar(){
+    vista.cbxTdocument.setEnabled(true);
+        vista.txtNdocumento.setEnabled(true);
+        vista.txtNombre.setEnabled(true);
+        vista.txtApellido.setEnabled(true);
+        vista.txtNacionalidad.setEnabled(true);
+        vista.txtEdad.setEnabled(true);
+        vista.cbxGenero.setEnabled(true);
+        vista.txtDistrito.setEnabled(true);
+        vista.CBX_roles.setEnabled(true);    
+    }
+    
+    
+    
 }

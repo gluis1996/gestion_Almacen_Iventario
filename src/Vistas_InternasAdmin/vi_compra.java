@@ -74,6 +74,7 @@ c_compra c;
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Compra");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Vendedor"));
 

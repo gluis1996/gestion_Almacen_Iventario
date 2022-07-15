@@ -13,6 +13,7 @@ import modelo.*;
 public class c_cliente implements ActionListener {
 
     private vi_Cliente vista;
+
     //private vi_tablaCliente tc = new vi_tablaCliente();
     public c_cliente() {
     }
@@ -32,24 +33,25 @@ public class c_cliente implements ActionListener {
         Object o = e.getSource();
         if (o.equals(vista.boton_registrar)) {
             ingresar();
+            limpiar();
         } else if (o.equals(vista.boton_nuevo)) {
             generarcodigo();
         } else if (o.equals(vista.boton_actualizar)) {
             Actualizar();
-        } else if (o.equals(vista.boton_verlista)){
+            limpiar();
+        } else if (o.equals(vista.boton_verlista)) {
             vi_tablaCliente tc = new vi_tablaCliente();
             vistav.v_principal.ADescritorio.add(tc);
-            tc.setVisible(true);           
+            tc.setVisible(true);
         } else if (o.equals(vista.boton_buscar)) {
-            //JOptionPane.showMessageDialog(null, "EXITO");
             Buscar();
-        
+
         } else if (o.equals(vista.boton_eliminar)) {
-            //JOptionPane.showMessageDialog(null, "EXITO");
             eliminar();
-        
+            limpiar();
+
         }
-        
+
     }
 
     public void ingresar() {
@@ -156,11 +158,11 @@ public class c_cliente implements ActionListener {
         vista.txtCodigo.setText(c);
     }
 
-    public void Buscar(){
-    String consulta = "SELECT * from cliente where idCliente ='" + vista.txtCodigo.getText() + "' or docuemnto = '" + vista.txtDocumento.getText() + "'";
+    public void Buscar() {
+        String consulta = "SELECT * from cliente where idCliente ='" + vista.txtCodigo.getText() + "' or docuemnto = '" + vista.txtDocumento.getText() + "'";
         ResultSet rs = Conexion.consulta(consulta);
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 vista.txtDocumento.setText(rs.getString(3));
                 vista.txtNombre.setText(rs.getString(4));
                 vista.txtApellido.setText(rs.getString(5));
@@ -168,31 +170,44 @@ public class c_cliente implements ActionListener {
                 vista.txtTelefono.setText(rs.getString(7));
                 vista.txtEmail.setText(rs.getString(8));
                 vista.txtFechaNacimiento.setText(rs.getString(9));
-                if (rs.getString(10).equals("S")){
+                if (rs.getString(10).equals("S")) {
                     vista.cbxEstado.setSelectedIndex(1);
-                }else if (rs.getString(10).equals("C")){
+                } else if (rs.getString(10).equals("C")) {
                     vista.cbxEstado.setSelectedIndex(2);
                 }
-                
-                if (rs.getString(11).equals("M")){
+
+                if (rs.getString(11).equals("M")) {
                     vista.cbxGenero.setSelectedIndex(1);
-                }else if (rs.getString(11).equals("F")){
+                } else if (rs.getString(11).equals("F")) {
                     vista.cbxGenero.setSelectedIndex(2);
                 }
-                
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error Busqueda");
         }
-    
+
     }
 
-    public void eliminar(){
-    m_cliente m = new m_cliente();
-    m_clienteDAO md = new m_clienteDAO();
-    m.setIdCliente(vista.txtCodigo.getText());
-    md.EliminarCliente(m);
+    public void eliminar() {
+        m_cliente m = new m_cliente();
+        m_clienteDAO md = new m_clienteDAO();
+        m.setIdCliente(vista.txtCodigo.getText());
+        md.EliminarCliente(m);
     }
-    
+
+    public void limpiar() {
+
+        vista.txtCodigo.setText("");
+        vista.cbxTdocumento.setSelectedIndex(0);
+        vista.txtDocumento.setText("");
+        vista.txtNombre.setText("");
+        vista.txtApellido.setText("");
+        vista.txtDireccion.setText("");
+        vista.txtTelefono.setText("");
+        vista.txtEmail.setText("");
+        vista.txtFechaNacimiento.setText("");
+        vista.cbxEstado.setSelectedIndex(0);
+        vista.cbxGenero.setSelectedIndex(0);
+    }
 }
-

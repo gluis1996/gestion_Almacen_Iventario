@@ -27,11 +27,14 @@ public class c_tabla_productoAlmacen implements ActionListener{
         this.vista = vista;
         llenarEnTabla(vista.tabla);
         this.vista.boton_buscar.addActionListener(this);
+        this.vista.boton_todo.addActionListener(this);
     }
         @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()== vista.boton_buscar){
             buscar(vista.tabla);
+        }else if (e.getSource() == vista.boton_todo){
+            llenarEnTabla(vista.tabla);
         }
     }
         public void llenarEnTabla(JTable tabla) {

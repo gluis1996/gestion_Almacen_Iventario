@@ -14,7 +14,6 @@ import vistav.v_principal;
 public class c_productoPiso implements ActionListener {
 
     private vi_productoPiso vista;
-    
     private m_productoPisoDAO mp = new m_productoPisoDAO();
     private m_detalleReponedorDAO mdrd = new m_detalleReponedorDAO();
     private m_productoAlmacenDAO fun = new m_productoAlmacenDAO();
@@ -23,20 +22,20 @@ public class c_productoPiso implements ActionListener {
     private m_loginDAO l = new m_loginDAO();
     private m_login ml = new m_login();
     static int acumulador;
-    
+
     public c_productoPiso(vi_productoPiso vista) {
         this.vista = vista;
         vista.txtcodEmpleado.setText(c_login.id);
         //desabiliar();
         this.mp.cargarcategoria(vista.cbxCategoria);
         this.vista.boton_guardar.addActionListener(this);
-        this.vista.boton_nuevo.addActionListener(this);
         this.vista.cbxCategoria.addActionListener(this);
         this.vista.boton_mostrar.addActionListener(this);
         this.vista.boton_cargar.addActionListener(this);
         this.vista.boton_actualizar.addActionListener(this);
         this.vista.boton_salir.addActionListener(this);
         this.vista.boton_suma.addActionListener(this);
+        this.vista.boton_buscar.addActionListener(this);
     }
 
     @Override
@@ -44,9 +43,6 @@ public class c_productoPiso implements ActionListener {
         Object o = e.getSource();
         if (o.equals(vista.boton_guardar)) {
             registrar();
-        } else if (o.equals(vista.boton_nuevo)) {
-            habilitar_guardar();
-            generarcodigo();
         } else if (o.equals(vista.cbxCategoria)) {
             cb_codigocategoria();
         } else if (o.equals(vista.boton_mostrar)) {
@@ -60,27 +56,27 @@ public class c_productoPiso implements ActionListener {
         } else if (o.equals(vista.boton_suma)) {
             int a = Integer.parseInt(vista.txtstockActual.getText()) + Integer.parseInt(vista.txtingreso.getText());
             vista.txtnuevoStock.setText(String.valueOf(a));
+        } else if (o.equals(vista.boton_buscar)){
+            buscar();
         }
 
-    }
-    
-    public void generarcodigo() {
-        m_productoPisoDAO fun = new m_productoPisoDAO();
-        DecimalFormat df = new DecimalFormat("00000");
-        String c = ("P" + String.valueOf(df.format(fun.generarCodigo())));
-        vista.txtcodigo.setText(c);
     }
 
     public void registrar() {
         m_productoPiso p = new m_productoPiso();
+         m_detalleReponedor d = new m_detalleReponedor();
+         int c = Integer.parseInt(vista.txtingreso.getText());
         int contador = 0;
         p.setCodigo(vista.txtcodigo.getText());
         p.setDescripcion(vista.txtdescripcion.getText());
         p.setCategoria(Integer.parseInt(codigocategoria));
-
+        d.setIdEmpleado(vista.txtcodEmpleado.getText());
+        d.setIdProducto(vista.txtcodigo.getText());
+        d.setDetalle(vista.txtobs.getText());
         try {
             if (Integer.parseInt(vista.txtingreso.getText()) >= 1) {
                 p.setCantidad(Integer.parseInt(vista.txtingreso.getText()));
+                d.setCantidadRegistrada(c);
                 vista.txtstockActual.requestFocus();
             }
         } catch (NumberFormatException e) {
@@ -109,6 +105,7 @@ public class c_productoPiso implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Ya exite este producto ", "INFO", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     mp.ingresar(p);
+                    mdrd.ingresaDetalleReponedor(d);
                     fun.disminuir(vista.txtcodigo.getText(), Integer.parseInt(vista.txtingreso.getText()));
                     limpiar();
                 }
@@ -119,7 +116,9 @@ public class c_productoPiso implements ActionListener {
         }
 
     }
+    
 
+    
     public void cb_codigocategoria() {
         String linea = vista.cbxCategoria.getSelectedItem().toString();
         String[] split = linea.split(" - ");
@@ -130,9 +129,9 @@ public class c_productoPiso implements ActionListener {
     public void actualizarProducto() {
         m_productoPiso p = new m_productoPiso();
         m_detalleReponedor d = new m_detalleReponedor();
-        int contador = 0;        
+        int contador = 0;
         int c = Integer.parseInt(vista.txtingreso.getText());
-        acumulador=acumulador+c;
+        acumulador = acumulador + c;
         d.setIdEmpleado(vista.txtcodEmpleado.getText());
         d.setIdProducto(vista.txtcodigo.getText());
         d.setDetalle(vista.txtobs.getText());
@@ -148,7 +147,7 @@ public class c_productoPiso implements ActionListener {
         p.setPrecioUnitario(Double.parseDouble(vista.txtprecioUni.getText()));
         p.setLimiteStock(Integer.parseInt(vista.txtLimiteStock.getText()));
         int resul = JOptionPane.showConfirmDialog(null, "Desea Actualziar", "Atencion", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if (resul == 0) {            
+        if (resul == 0) {
             mp.actualizar(p);
             fun.disminuir(vista.txtcodigo.getText(), c);
             mdrd.ingresaDetalleReponedor(d);
@@ -195,28 +194,23 @@ public class c_productoPiso implements ActionListener {
 
     }
 
-    public void desabiliar() {
-        vista.boton_cargar.setEnabled(true);
-        vista.boton_nuevo.setEnabled(true);
-        vista.boton_mostrar.setEnabled(false);
-        vista.boton_actualizar.setEnabled(false);
-        vista.boton_guardar.setEnabled(false);
-    }
+    public void buscar() {
+        String consulta = "call sp_buscarProdutoAlmacen ('"+vista.txtcodigo.getText()+"')";
 
-    public void habilitar_guardar() {
-        vista.boton_cargar.setEnabled(false);
-        vista.boton_nuevo.setEnabled(true);
-        vista.boton_mostrar.setEnabled(true);
-        vista.boton_actualizar.setEnabled(false);
-        vista.boton_guardar.setEnabled(true);
-    }
+        ResultSet rs = Conexion.consulta(consulta);
+        try {
+            while (rs.next()) {
+                vista.txtcodigo.setText(rs.getString(1));
+                vista.txtdescripcion.setText(rs.getString(2));                
+                vista.cbxCategoria.setSelectedIndex(rs.getInt(4));
+                vista.txtstockActual.setText(String.valueOf(rs.getInt(7)));
+                vista.txtprecioUni.setText(String.valueOf(rs.getDouble(8)));
 
-    public void cargar() {
-        vista.boton_cargar.setEnabled(true);
-        vista.boton_nuevo.setEnabled(true);
-        vista.boton_mostrar.setEnabled(false);
-        vista.boton_actualizar.setEnabled(true);
-        vista.boton_guardar.setEnabled(false);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "erroe en el query");
+        }
+
     }
 
 }

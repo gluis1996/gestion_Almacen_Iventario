@@ -25,7 +25,7 @@ public class c_principal implements ActionListener{
     private m_productoPisoDAO mp;
     private vi_Cliente vcli = new vi_Cliente();
     private vi_compra vcp = new vi_compra();
-    private vi_Ingreso_a_Piso vip = new vi_Ingreso_a_Piso();
+    private vi_listaCompra vlc = new vi_listaCompra();
     private vi_tabla_ProductoPiso vtp = new vi_tabla_ProductoPiso();
     private vi_detalleIngreso vdi = new vi_detalleIngreso();
     //proveedor
@@ -45,6 +45,7 @@ public class c_principal implements ActionListener{
         this.vista.mv_clientes.addActionListener(this);
         this.vista.mv_nuevaVenta.addActionListener(this);
         this.vista.boton_nueva_Venta.addActionListener(this);
+        this.vista.mrv_resumenVenta.addActionListener(this);
         //area producto
         this.vista.mp_productoAlmacen.addActionListener(this);
         this.vista.mp_categoria.addActionListener(this);
@@ -89,6 +90,10 @@ public class c_principal implements ActionListener{
             v_principal.ADescritorio.add(vcp);
             vcp.txtcodigoVendedor.setText(vista.lblcod.getText());
             vcp.setVisible(true);
+        }else if (ev.equals(vista.mrv_resumenVenta)){
+            v_principal.ADescritorio.add(vlc);
+            vlc.lblcodv.setText(vista.lblcod.getText());
+            vlc.setVisible(true);
         }
         //area producto
         else if (ev.equals(vista.mp_productoAlmacen)){
